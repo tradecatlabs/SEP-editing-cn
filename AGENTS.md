@@ -33,6 +33,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - `dist/*.epub` 超过 GitHub 普通 Git 单文件限制，默认通过 GitHub Release 附件发布，不直接提交到 Git 历史。
 - EPUB 标题元数据必须使用 `斯坦福哲学百科全书（中文版）`。
 - EPUB 作者/创建者元数据必须使用 `The Metaphysics Research Lab, Department of Philosophy, Stanford University`，并保留 `ISSN 1095-5054`。
+- EPUB 正文前置页必须包含 `工程整理说明`，用于声明 TradeCatLabs 的工程整理、资源锁定、审计与发布职责。
 - TradeCatLabs 展示信息集中维护在 `TRADECATLABS.md`，供应链声明集中维护在 `SUPPLY_CHAIN.md`。
 - README 调研依据与目录结构模式集中维护在 `docs/README_PATTERNS.md`。
 - 贡献边界和 Issue/PR 入口分别维护在 `CONTRIBUTING.md` 与 `.github/`。

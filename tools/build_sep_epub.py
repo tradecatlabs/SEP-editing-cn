@@ -39,6 +39,13 @@ PROJECT_RIGHTS = (
 PROJECT_ISSN = "1095-5054"
 PROJECT_SOURCE = "Library of Congress Catalog Data: ISSN 1095-5054"
 PROJECT_OUTPUT_NAME = f"{PROJECT_TITLE} - {PROJECT_CREATOR}.epub"
+PROJECT_REPOSITORY = "https://github.com/tradecatlabs/SEP-editing-cn"
+UPSTREAM_REPOSITORY = "https://github.com/Rivensa/SEP-CN"
+LAB_NAME = "TradeCatLabs"
+LAB_GITHUB = "https://github.com/tradecatlabs"
+LAB_X = "https://x.com/tradecatlabs"
+ABOUT_PAGE_TITLE = "工程整理说明"
+ABOUT_PAGE_HREF = "text/about-tradecatlabs.xhtml"
 LANGUAGE = "zh-CN"
 USER_AGENT = "SEP-CN-EPUB-Builder/1.0"
 
@@ -812,15 +819,37 @@ th, td {
 .title-page h1 {
   font-size: 1.8em;
 }
+.about-page {
+  margin-top: 8%;
+}
+.about-page ul {
+  padding-left: 1.3em;
+}
+.about-page li {
+  margin: 0.45em 0;
+}
 """,
         encoding="utf-8",
     )
     title_body = f"""<section class="title-page" epub:type="titlepage">
   <h1>{html.escape(PROJECT_TITLE)}</h1>
   <p>基于 SEP-CN 项目内容生成的离线 EPUB。</p>
+  <p>EPUB 工程整理：<a href="{html.escape(LAB_GITHUB)}">{html.escape(LAB_NAME)}</a></p>
   <p>构建时间：{dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
 </section>"""
     write_xhtml(ops_dir / "text" / "title.xhtml", PROJECT_TITLE, title_body)
+    about_body = f"""<section class="about-page" epub:type="frontmatter">
+  <h1>{html.escape(ABOUT_PAGE_TITLE)}</h1>
+  <p>本 EPUB 由 {html.escape(LAB_NAME)} 基于 SEP-CN 本地资料源整理、构建、资源锁定、审计并发布。</p>
+  <p>正文内容来源：<a href="{html.escape(UPSTREAM_REPOSITORY)}">Rivensa/SEP-CN</a>。电子书工程仓库：<a href="{html.escape(PROJECT_REPOSITORY)}">tradecatlabs/SEP-editing-cn</a>。</p>
+  <p>原始 SEP 版权信息：{html.escape(PROJECT_RIGHTS)}</p>
+  <p>Library of Congress Catalog Data: ISSN {html.escape(PROJECT_ISSN)}</p>
+  <ul>
+    <li>TradeCatLabs GitHub：<a href="{html.escape(LAB_GITHUB)}">{html.escape(LAB_GITHUB)}</a></li>
+    <li>TradeCatLabs X：<a href="{html.escape(LAB_X)}">{html.escape(LAB_X)}</a></li>
+  </ul>
+</section>"""
+    write_xhtml(ops_dir / ABOUT_PAGE_HREF, ABOUT_PAGE_TITLE, about_body)
 
 
 def toc_node_to_nav(node: TocNode, current_page_dir: str = "") -> str:
@@ -841,6 +870,7 @@ def write_nav(toc_roots: list[TocNode], work_dir: Path) -> None:
   <h1>目录</h1>
   <ol>
     <li><a href="text/title.xhtml">{html.escape(PROJECT_TITLE)}</a></li>
+    <li><a href="{html.escape(ABOUT_PAGE_HREF)}">{html.escape(ABOUT_PAGE_TITLE)}</a></li>
     {''.join(toc_node_to_nav(node) for node in toc_roots)}
   </ol>
 </nav>"""
@@ -878,7 +908,11 @@ def write_ncx(toc_roots: list[TocNode], work_dir: Path, book_id: str) -> None:
         children = "".join(walk(child) for child in node.children)
         return navpoint(node.title, href, children)
 
-    points = navpoint(PROJECT_TITLE, "text/title.xhtml") + "".join(walk(node) for node in toc_roots)
+    points = (
+        navpoint(PROJECT_TITLE, "text/title.xhtml")
+        + navpoint(ABOUT_PAGE_TITLE, ABOUT_PAGE_HREF)
+        + "".join(walk(node) for node in toc_roots)
+    )
     ncx = f"""<?xml version="1.0" encoding="utf-8"?>
 <ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
   <head>
@@ -907,6 +941,7 @@ def write_opf(pages: list[Page], resources: dict[str, Resource], work_dir: Path,
         ("ncx", "toc.ncx", "application/x-dtbncx+xml", ""),
         ("css", "styles/sep.css", "text/css", ""),
         ("title", "text/title.xhtml", "application/xhtml+xml", ""),
+        ("about-tradecatlabs", ABOUT_PAGE_HREF, "application/xhtml+xml", ""),
     ]
     for idx, page in enumerate(pages, 1):
         manifest_items.append((manifest_id(idx, "page"), page.output_href, "application/xhtml+xml", ""))
@@ -923,7 +958,10 @@ def write_opf(pages: list[Page], resources: dict[str, Resource], work_dir: Path,
         f'    <item id="{item_id}" href="{html.escape(href)}" media-type="{media}"{extra}/>'
         for item_id, href, media, extra in manifest_items
     )
-    spine_items = ['    <itemref idref="title"/>']
+    spine_items = [
+        '    <itemref idref="title"/>',
+        '    <itemref idref="about-tradecatlabs"/>',
+    ]
     for idx, _page in enumerate(pages, 1):
         spine_items.append(f'    <itemref idref="{manifest_id(idx, "page")}"/>')
 

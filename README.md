@@ -51,6 +51,8 @@ EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制
 | Library of Congress Catalog Data | ISSN 1095-5054 |
 | 语言 | zh-CN |
 
+EPUB 正文前置页包含 `工程整理说明`，用于说明 TradeCatLabs 的整理、构建、资源锁定、审计与发布职责。
+
 ## 构建与审计结果
 
 | 检查项 | 结果 |

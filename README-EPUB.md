@@ -77,6 +77,7 @@ build/epub/reports/resource-scan.json
 - `dc:rights`：The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University.
 - `dc:identifier`：保留构建生成的 UUID，并写入 `issn:1095-5054`
 - `dc:source`：Library of Congress Catalog Data: ISSN 1095-5054
+- EPUB 正文前置页：`工程整理说明`，声明 TradeCatLabs 的 EPUB 工程整理、资源锁定、审计与发布职责。
 
 ## 当前成品审计摘要
 
