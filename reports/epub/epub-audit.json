@@ -1,0 +1,31 @@
+{
+  "epub_path": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "resource_error_count": 0,
+  "resource_placeholder_count": 28,
+  "resource_fallback_count": 23,
+  "resource_count": 1095,
+  "zip": {
+    "entry_count": 3700,
+    "first_entry": "mimetype",
+    "mimetype_ok": true
+  },
+  "epub": {
+    "opf_path": "OPS/content.opf",
+    "manifest_count": 3669,
+    "missing_manifest_count": 0,
+    "missing_manifest": [],
+    "spine_missing_count": 0,
+    "spine_missing": [],
+    "xhtml_count": 2619,
+    "xml_error_count": 0,
+    "xml_errors": [],
+    "image_ref_count": 7874,
+    "missing_image_count": 0,
+    "missing_images": [],
+    "href_ref_count": 52189,
+    "external_link_count": 45130,
+    "broken_internal_count": 0,
+    "broken_internal": []
+  },
+  "passed": true
+}

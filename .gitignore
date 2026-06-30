@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local source checkout and build cache
+.source/
+build/
+dist/*.epub
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Reports and release notes are intentionally kept trackable.
+!dist/
+!dist/README.md
+!reports/
+!reports/**

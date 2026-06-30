@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-06-30T20:37:56+00:00",
+  "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "size": 109135372,
+  "sha256": "88d9ffb99e74f5c9ddd44c27c9eebf4abfeba4bfcf552a3816ed629ff4ebbfd8",
+  "zip_bad_crc": null,
+  "first_entry": "mimetype",
+  "first_entry_uncompressed": true,
+  "metadata": {
+    "title": [
+      "斯坦福哲学百科全书（中文版）"
+    ],
+    "creator": [
+      "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+    ],
+    "publisher": [
+      "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+    ],
+    "rights": [
+      "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+    ],
+    "source": [
+      "Library of Congress Catalog Data: ISSN 1095-5054"
+    ],
+    "identifier": [
+      "issn:1095-5054",
+      "calibre:200",
+      "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+      "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+    ],
+    "language": [
+      "zh-CN"
+    ]
+  },
+  "upstream": {
+    "sep_cn": "https://github.com/Rivensa/SEP-CN",
+    "sep_copyright": "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University.",
+    "loc_catalog_data": "ISSN 1095-5054"
+  },
+  "publisher_lab": {
+    "name": "TradeCatLabs",
+    "github": "https://github.com/tradecatlabs",
+    "x": "https://x.com/tradecatlabs"
+  }
+}
