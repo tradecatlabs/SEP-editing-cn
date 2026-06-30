@@ -12,8 +12,8 @@
 [![Format](https://img.shields.io/badge/format-EPUB%203-blue?style=flat-square)](https://www.w3.org/publishing/epub3/)
 [![Lab](https://img.shields.io/badge/lab-TradeCatLabs-black?style=flat-square)](https://github.com/tradecatlabs)
 
-[下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
-[查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.06.30) ·
+[下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
+[查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.01) ·
 [构建说明](README-EPUB.md) ·
 [供应链说明](SUPPLY_CHAIN.md)
 
@@ -29,14 +29,14 @@
 
 ## 快速下载
 
-当前发布版本：`v2026.06.30`
+当前发布版本：`v2026.07.01`
 
 | 文件 | 用途 |
 | --- | --- |
-| [SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) | EPUB 成品 |
-| [release-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/release-manifest.json) | 发布清单与 SHA256 |
-| [epub-audit.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/epub-audit.json) | EPUB 审计报告 |
-| [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/resource-manifest.json) | 资源锁定清单 |
+| [SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) | EPUB 成品 |
+| [release-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/release-manifest.json) | 发布清单与 SHA256 |
+| [epub-audit.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/epub-audit.json) | EPUB 审计报告 |
+| [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/resource-manifest.json) | 资源锁定清单 |
 
 EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制，因此通过 GitHub Release 附件分发，不写入 Git 历史。
 
