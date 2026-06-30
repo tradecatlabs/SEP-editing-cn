@@ -13,6 +13,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 ├── SOURCE.md                         # 上游资料源与许可证边界说明
 ├── SUPPLY_CHAIN.md                   # 资源供应链、上下游与发布边界
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息与项目职责
+├── docs/README_PATTERNS.md           # README 调研、同类项目模式与目录结构沉淀
 ├── source/SEP-CN                     # 指向上游资料源的软链接，不是正文副本
 ├── tools/build_sep_epub.py           # 标准 EPUB 构建、资源锁定与审计工具
 ├── reports/epub/                     # 已发布产物对应的发布清单与审计证据
@@ -31,6 +32,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - EPUB 标题元数据必须使用 `斯坦福哲学百科全书（中文版）`。
 - EPUB 作者/创建者元数据必须使用 `The Metaphysics Research Lab, Department of Philosophy, Stanford University`，并保留 `ISSN 1095-5054`。
 - TradeCatLabs 展示信息集中维护在 `TRADECATLABS.md`，供应链声明集中维护在 `SUPPLY_CHAIN.md`。
+- README 调研依据与目录结构模式集中维护在 `docs/README_PATTERNS.md`。
 
 ## 维护规则
 

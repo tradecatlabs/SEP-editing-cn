@@ -1,67 +1,137 @@
 # SEP-editing-cn
 
-SEP-editing-cn 是一个面向公开传播的 SEP-CN EPUB 构建、清洗、审计与发布仓库。
+<div align="center">
 
-本仓库不内嵌 SEP-CN Markdown 正文源仓库；正文资料源只保留链接：<https://github.com/Rivensa/SEP-CN>。
+# 斯坦福哲学百科全书（中文版）EPUB
 
-## 发布产物
+一个可复现、可审计、面向电子书阅读器的 SEP-CN EPUB 构建与发布仓库。
 
-- `dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub`：当前本地 EPUB 成品；因文件超过 GitHub 普通 Git 100MB 单文件限制，不直接提交到 Git 历史。
-- `reports/epub/`：当前 EPUB 对应的发布清单、资源清单、孤儿页面清单和审计报告。
-- `tools/build_sep_epub.py`：从外部 SEP-CN Markdown 源构建 EPUB 的工具。
-- `source/SEP-CN`：指向上游资料源的软链接，不包含正文内容。
+[![Release](https://img.shields.io/github/v/release/tradecatlabs/SEP-editing-cn?style=flat-square)](https://github.com/tradecatlabs/SEP-editing-cn/releases)
+[![Downloads](https://img.shields.io/github/downloads/tradecatlabs/SEP-editing-cn/total?style=flat-square)](https://github.com/tradecatlabs/SEP-editing-cn/releases)
+[![Last commit](https://img.shields.io/github/last-commit/tradecatlabs/SEP-editing-cn?style=flat-square)](https://github.com/tradecatlabs/SEP-editing-cn/commits/main)
+[![Format](https://img.shields.io/badge/format-EPUB%203-blue?style=flat-square)](https://www.w3.org/publishing/epub3/)
+[![Lab](https://img.shields.io/badge/lab-TradeCatLabs-black?style=flat-square)](https://github.com/tradecatlabs)
 
-## EPUB 元数据
+[下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
+[查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.06.30) ·
+[构建说明](README-EPUB.md) ·
+[供应链说明](SUPPLY_CHAIN.md)
 
-- 标题：斯坦福哲学百科全书（中文版）
-- 作者/创建者：The Metaphysics Research Lab, Department of Philosophy, Stanford University
-- 出版者：The Metaphysics Research Lab, Department of Philosophy, Stanford University
-- 版权声明：The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University.
-- Library of Congress Catalog Data：ISSN 1095-5054
-- 语言：zh-CN
+</div>
 
-## 供应链
+---
 
-本仓库采用“上游内容源 + 本地构建工具 + 可审计发布产物”的供应链模型：
+## 这是什么
 
-1. 内容上游：Stanford Encyclopedia of Philosophy 的版权与目录识别信息。
-2. 中文资料源：`Rivensa/SEP-CN`，地址为 <https://github.com/Rivensa/SEP-CN>。
-3. 构建链路：`tools/build_sep_epub.py` 读取外部 SEP-CN 克隆目录，锁定图片资源，生成 EPUB 3 结构。
-4. 审计证据：`reports/epub/` 保存资源清单、孤儿页面清单和 EPUB 门禁结果。
-5. 下游产物：`dist/` 中的 EPUB 供阅读器、归档、Release 分发使用。
+`SEP-editing-cn` 把上游 SEP-CN Markdown 资料源整理为适合 iOS Books、Kindle、Calibre 等阅读器使用的 EPUB 文件，并保留完整的资源清单与审计证据。
 
-完整说明见 `SUPPLY_CHAIN.md`。
+本仓库不复制上游正文源仓库；正文资料源只保留指针：<https://github.com/Rivensa/SEP-CN>。
 
-当前发布清单见 `reports/epub/release-manifest.json`。
+## 快速下载
 
-EPUB 文件通过 GitHub Release 附件发布，流程见 `RELEASE.md`。
+当前发布版本：`v2026.06.30`
 
-## TradeCatLabs
+| 文件 | 用途 |
+| --- | --- |
+| [SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) | EPUB 成品 |
+| [release-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/release-manifest.json) | 发布清单与 SHA256 |
+| [epub-audit.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/epub-audit.json) | EPUB 审计报告 |
+| [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.06.30/resource-manifest.json) | 资源锁定清单 |
 
-TradeCatLabs 是本仓库的实验性整理与发布主体，负责 EPUB 构建链、格式清洗、资源审计、公开发布说明和后续自动化改进。
+EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制，因此通过 GitHub Release 附件分发，不写入 Git 历史。
 
-- GitHub：<https://github.com/tradecatlabs>
-- X：<https://x.com/tradecatlabs>
+## 当前 EPUB 元数据
 
-更多说明见 `TRADECATLABS.md`。
+| 字段 | 值 |
+| --- | --- |
+| 标题 | 斯坦福哲学百科全书（中文版） |
+| 作者/创建者 | The Metaphysics Research Lab, Department of Philosophy, Stanford University |
+| 出版者 | The Metaphysics Research Lab, Department of Philosophy, Stanford University |
+| 版权声明 | The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University. |
+| Library of Congress Catalog Data | ISSN 1095-5054 |
+| 语言 | zh-CN |
+
+## 构建与审计结果
+
+| 检查项 | 结果 |
+| --- | ---: |
+| EPUB XML 错误 | 0 |
+| 缺失图片 | 0 |
+| 内部坏链 | 0 |
+| 资源下载/锁定错误 | 0 |
+| 资源总数 | 1095 |
+| 源站失效但已占位保底图片 | 28 |
+| 源站失效但通过回退匹配恢复图片 | 23 |
+
+审计证据保存在 `reports/epub/`，当前发布清单为 `reports/epub/release-manifest.json`。
+
+## 供应链模型
+
+```text
+Stanford Encyclopedia of Philosophy
+        ↓ 版权、ISSN、原始百科来源
+Rivensa/SEP-CN
+        ↓ Markdown 中文资料源
+SEP-editing-cn / tools/build_sep_epub.py
+        ↓ 资源锁定、EPUB 打包、审计
+GitHub Release + reports/epub/*.json
+        ↓
+读者 / 研究者 / 电子书阅读器
+```
+
+详细说明见 `SUPPLY_CHAIN.md`。
 
 ## 本地重新构建
 
 ```bash
 git clone https://github.com/Rivensa/SEP-CN .source/SEP-CN
-python3 tools/build_sep_epub.py --root .source/SEP-CN --jobs 8 --timeout 60 --retries 3 --keep-work
+python3 tools/build_sep_epub.py \
+  --root .source/SEP-CN \
+  --build-dir build/epub \
+  --dist-dir dist \
+  --jobs 8 \
+  --timeout 60 \
+  --retries 3 \
+  --keep-work
 ```
 
-## 当前成品审计摘要
+只扫描目录和资源：
 
-- EPUB XML 错误：0
-- 缺失图片：0
-- 内部坏链：0
-- 资源下载/锁定错误：0
-- 资源总数：1095
-- 源站失效但已占位保底图片：28
-- 源站失效但通过回退匹配恢复图片：23
+```bash
+python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only
+```
 
-## 发布边界
+## 仓库结构
 
-本仓库用于传播 EPUB 构建工具、审计证据与 EPUB 发布说明，不替代上游 SEP-CN 内容仓库。正文内容、原始 Markdown、原始许可证与贡献历史请以上游仓库为准。
+```text
+.
+├── README.md                         # 项目入口、下载和状态说明
+├── README-EPUB.md                    # EPUB 构建与审计说明
+├── RELEASE.md                        # Release 附件发布流程
+├── SOURCE.md                         # 上游资料源与版权边界
+├── SUPPLY_CHAIN.md                   # 资源供应链与上下游说明
+├── TRADECATLABS.md                   # TradeCatLabs 实验室信息
+├── docs/README_PATTERNS.md           # README 调研与项目目录模式沉淀
+├── dist/README.md                    # 本地 EPUB 产物目录说明
+├── reports/epub/                     # 发布清单、资源清单、审计报告
+├── source/SEP-CN                     # 指向上游资料源的软链接
+└── tools/build_sep_epub.py           # EPUB 构建、资源锁定与审计工具
+```
+
+## TradeCatLabs
+
+TradeCatLabs 负责本项目的 EPUB 工程化整理、资源审计、发布说明和自动化改进。
+
+- GitHub：<https://github.com/tradecatlabs>
+- X：<https://x.com/tradecatlabs>
+
+## 参考项目
+
+README 与目录结构参考了 Standard Ebooks 工具链、Free Programming Books、mdBook EPUB backend 等公开项目的通用表达方式；具体调研记录见 `docs/README_PATTERNS.md`。
+
+## 边界声明
+
+- TradeCatLabs 不声明拥有 Stanford Encyclopedia of Philosophy 正文版权。
+- 本仓库不替代 `Rivensa/SEP-CN` 上游内容仓库。
+- 正文版权、原始 Markdown、原始许可证和贡献历史请以上游项目为准。
+- 本仓库新增价值集中在 EPUB 构建链、资源完整性、审计证据和发布可追溯性。
