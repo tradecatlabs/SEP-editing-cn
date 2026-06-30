@@ -12,8 +12,8 @@
 [![Format](https://img.shields.io/badge/format-EPUB%203-blue?style=flat-square)](https://www.w3.org/publishing/epub3/)
 [![Lab](https://img.shields.io/badge/lab-TradeCatLabs-black?style=flat-square)](https://github.com/tradecatlabs)
 
-[下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
-[查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.01) ·
+[下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.02/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
+[查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.02) ·
 [构建说明](README-EPUB.md) ·
 [供应链说明](SUPPLY_CHAIN.md)
 
@@ -29,14 +29,14 @@
 
 ## 快速下载
 
-当前发布版本：`v2026.07.01`
+当前发布版本：`v2026.07.02`
 
 | 文件 | 用途 |
 | --- | --- |
-| [SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) | EPUB 成品 |
-| [release-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/release-manifest.json) | 发布清单与 SHA256 |
-| [epub-audit.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/epub-audit.json) | EPUB 审计报告 |
-| [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.01/resource-manifest.json) | 资源锁定清单 |
+| [SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.02/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) | EPUB 成品 |
+| [release-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.02/release-manifest.json) | 发布清单与 SHA256 |
+| [epub-audit.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.02/epub-audit.json) | EPUB 审计报告 |
+| [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.02/resource-manifest.json) | 资源锁定清单 |
 
 EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制，因此通过 GitHub Release 附件分发，不写入 Git 历史。
 
@@ -51,7 +51,7 @@ EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制
 | Library of Congress Catalog Data | ISSN 1095-5054 |
 | 语言 | zh-CN |
 
-EPUB 正文前置页包含 `工程整理说明`，用于说明 TradeCatLabs 的整理、构建、资源锁定、审计与发布职责。
+EPUB 标题页包含 TradeCatLabs 工程整理说明；该信息通过补丁工具写入标题页，不改 OPF、nav、NCX、封面、manifest 或 spine。
 
 ## 构建与审计结果
 
@@ -125,7 +125,8 @@ python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only
 ├── dist/README.md                    # 本地 EPUB 产物目录说明
 ├── reports/epub/                     # 发布清单、资源清单、审计报告
 ├── source/SEP-CN                     # 指向上游资料源的软链接
-└── tools/build_sep_epub.py           # EPUB 构建、资源锁定与审计工具
+├── tools/build_sep_epub.py           # EPUB 构建、资源锁定与审计工具
+└── tools/patch_epub_tradecatlabs_notice.py # 保持元数据/封面/目录不变的标题页补丁工具
 ```
 
 ## TradeCatLabs

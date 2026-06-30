@@ -1,0 +1,135 @@
+{
+  "input": "D:\\iCloudDrive\\下载\\斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "output": "\\\\wsl.localhost\\Ubuntu\\home\\lenovo\\.projects\\SEP-editing-cn\\dist\\斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "backup": null,
+  "before": {
+    "sha256": "88d9ffb99e74f5c9ddd44c27c9eebf4abfeba4bfcf552a3816ed629ff4ebbfd8",
+    "size": 109135372,
+    "bad_crc": null,
+    "first_entry": "mimetype",
+    "mimetype_uncompressed": true,
+    "metadata": {
+      "title": [
+        "斯坦福哲学百科全书（中文版）"
+      ],
+      "creator": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "publisher": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "language": [
+        "zh-CN"
+      ],
+      "date": [
+        "2026-06-30T16:00:00+00:00"
+      ],
+      "identifier": [
+        "issn:1095-5054",
+        "calibre:200",
+        "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+        "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+      ],
+      "rights": [
+        "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+      ],
+      "source": [
+        "Library of Congress Catalog Data: ISSN 1095-5054"
+      ]
+    },
+    "manifest_count": 3670,
+    "spine_count": 2618,
+    "xhtml_count": 2619,
+    "nav_link_count": 2618,
+    "ncx_navpoint_count": 2648,
+    "opf_sha256": "88d86aab8eaf46739fa28a784fe2747158f66ed19d2b4198ef93b0be67f74925",
+    "nav_sha256": "ef9f6bebb1256f0781cf66d70387097df8fa05cb6e02d355f9cf3aa0de6e05a5",
+    "ncx_sha256": "0a7fd2ee43ae671b4dca7b6ac68287878d422389fcf7878b972b65e1cdd9c6a9",
+    "title_sha256": "a12c362f13686fd4b9c8e0a7baadf32edd90241069fcb5094b47001085e1e4b6",
+    "cover_items": [
+      {
+        "id": "cover",
+        "href": "OPS/cover.jpg",
+        "full": "OPS/OPS/cover.jpg",
+        "exists": true,
+        "sha256": "43d48aeb40ca06f3bb0b71c205044def57ed81b648de5e8740a3ded157ecb677",
+        "size": 126865
+      }
+    ],
+    "tradecatlabs_in_title": false
+  },
+  "after": {
+    "sha256": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c",
+    "size": 109135501,
+    "bad_crc": null,
+    "first_entry": "mimetype",
+    "mimetype_uncompressed": true,
+    "metadata": {
+      "title": [
+        "斯坦福哲学百科全书（中文版）"
+      ],
+      "creator": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "publisher": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "language": [
+        "zh-CN"
+      ],
+      "date": [
+        "2026-06-30T16:00:00+00:00"
+      ],
+      "identifier": [
+        "issn:1095-5054",
+        "calibre:200",
+        "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+        "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+      ],
+      "rights": [
+        "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+      ],
+      "source": [
+        "Library of Congress Catalog Data: ISSN 1095-5054"
+      ]
+    },
+    "manifest_count": 3670,
+    "spine_count": 2618,
+    "xhtml_count": 2619,
+    "nav_link_count": 2618,
+    "ncx_navpoint_count": 2648,
+    "opf_sha256": "88d86aab8eaf46739fa28a784fe2747158f66ed19d2b4198ef93b0be67f74925",
+    "nav_sha256": "ef9f6bebb1256f0781cf66d70387097df8fa05cb6e02d355f9cf3aa0de6e05a5",
+    "ncx_sha256": "0a7fd2ee43ae671b4dca7b6ac68287878d422389fcf7878b972b65e1cdd9c6a9",
+    "title_sha256": "a0a848c7615e2d30e12075fd1c4737d21bb0d32d717af4d1158c895858b3a333",
+    "cover_items": [
+      {
+        "id": "cover",
+        "href": "OPS/cover.jpg",
+        "full": "OPS/OPS/cover.jpg",
+        "exists": true,
+        "sha256": "43d48aeb40ca06f3bb0b71c205044def57ed81b648de5e8740a3ded157ecb677",
+        "size": 126865
+      }
+    ],
+    "tradecatlabs_in_title": true
+  },
+  "invariants_preserved": {
+    "metadata": true,
+    "manifest_count": true,
+    "spine_count": true,
+    "xhtml_count": true,
+    "nav_link_count": true,
+    "ncx_navpoint_count": true,
+    "opf_sha256": true,
+    "nav_sha256": true,
+    "ncx_sha256": true,
+    "cover_items": true
+  },
+  "changed_payload": {
+    "title_xhtml_changed": true,
+    "tradecatlabs_in_title": true,
+    "sha256_before": "88d9ffb99e74f5c9ddd44c27c9eebf4abfeba4bfcf552a3816ed629ff4ebbfd8",
+    "sha256_after": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c"
+  }
+}

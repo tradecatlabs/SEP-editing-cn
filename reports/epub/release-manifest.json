@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-30T21:56:16.661008+00:00",
+  "generated_at": "2026-06-30T22:14:51.209681+00:00",
   "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
-  "size": 109038175,
-  "sha256": "dfc953deefbf243729d2fbadab58266773170c39735b0add286e30b3207024b4",
+  "size": 109135501,
+  "sha256": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c",
   "zip_bad_crc": null,
   "first_entry": "mimetype",
   "first_entry_uncompressed": true,
@@ -23,17 +23,22 @@
       "Library of Congress Catalog Data: ISSN 1095-5054"
     ],
     "identifier": [
-      "urn:uuid:1d08d040-662a-4554-8166-81d4c957f029",
-      "issn:1095-5054"
+      "issn:1095-5054",
+      "calibre:200",
+      "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+      "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
     ],
     "language": [
       "zh-CN"
+    ],
+    "date": [
+      "2026-06-30T16:00:00+00:00"
     ]
   },
-  "epub_frontmatter": {
-    "tradecatlabs_about_page": "OPS/text/about-tradecatlabs.xhtml",
-    "tradecatlabs_mentions": 3,
-    "engineering_note_title": "工程整理说明"
+  "tradecatlabs_notice": {
+    "entry": "OPS/text/title.xhtml",
+    "present": true,
+    "method": "title_page_patch_preserving_opf_nav_ncx_cover"
   },
   "upstream": {
     "sep_cn": "https://github.com/Rivensa/SEP-CN",
@@ -47,8 +52,8 @@
   },
   "release": {
     "repo": "tradecatlabs/SEP-editing-cn",
-    "tag": "v2026.07.01",
-    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.01",
+    "tag": "v2026.07.02",
+    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.02",
     "epub_asset_name": "SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
   }
 }

@@ -35,7 +35,7 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release create v2026.07.01 \
+gh release create v2026.07.02 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
@@ -52,7 +52,7 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release upload v2026.07.01 \
+gh release upload v2026.07.02 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \

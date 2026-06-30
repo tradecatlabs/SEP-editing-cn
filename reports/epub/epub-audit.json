@@ -16,16 +16,50 @@
     "missing_manifest": [],
     "spine_missing_count": 0,
     "spine_missing": [],
-    "xhtml_count": 2620,
+    "xhtml_count": 2619,
     "xml_error_count": 0,
     "xml_errors": [],
     "image_ref_count": 7874,
     "missing_image_count": 0,
     "missing_images": [],
-    "href_ref_count": 52195,
-    "external_link_count": 45135,
+    "href_ref_count": 52192,
+    "external_link_count": 45133,
     "broken_internal_count": 0,
     "broken_internal": []
+  },
+  "metadata": {
+    "title": [
+      "斯坦福哲学百科全书（中文版）"
+    ],
+    "creator": [
+      "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+    ],
+    "publisher": [
+      "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+    ],
+    "rights": [
+      "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+    ],
+    "source": [
+      "Library of Congress Catalog Data: ISSN 1095-5054"
+    ],
+    "identifier": [
+      "issn:1095-5054",
+      "calibre:200",
+      "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+      "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+    ],
+    "language": [
+      "zh-CN"
+    ],
+    "date": [
+      "2026-06-30T16:00:00+00:00"
+    ]
+  },
+  "tradecatlabs_notice": {
+    "entry": "OPS/text/title.xhtml",
+    "present": true,
+    "method": "title_page_patch_preserving_opf_nav_ncx_cover"
   },
   "passed": true
 }

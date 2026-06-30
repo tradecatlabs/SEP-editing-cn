@@ -7,6 +7,7 @@
 ## 已包含内容
 
 - `tools/build_sep_epub.py`：EPUB 构建、资源锁定、打包与审计工具。
+- `tools/patch_epub_tradecatlabs_notice.py`：只修改标题页正文提示，并验证 OPF、nav、NCX、封面、manifest、spine 不变。
 - `dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub`：当前本地 EPUB 成品；不直接进入 Git 历史，发布时作为 GitHub Release 附件上传。
 - `reports/epub/`：发布清单、资源清单、孤儿页面清单与 EPUB 审计报告。
 - `source/SEP-CN`：指向上游资料源的软链接，不是正文副本。
@@ -77,7 +78,18 @@ build/epub/reports/resource-scan.json
 - `dc:rights`：The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University.
 - `dc:identifier`：保留构建生成的 UUID，并写入 `issn:1095-5054`
 - `dc:source`：Library of Congress Catalog Data: ISSN 1095-5054
-- EPUB 正文前置页：`工程整理说明`，声明 TradeCatLabs 的 EPUB 工程整理、资源锁定、审计与发布职责。
+- EPUB 标题页正文提示：声明 TradeCatLabs 的 EPUB 工程整理、资源锁定、审计与发布职责；不得通过新增 spine/nav 页面实现。
+
+## 保持元数据/封面/目录不变地补充 TradeCatLabs 信息
+
+```bash
+python3 tools/patch_epub_tradecatlabs_notice.py \
+  input.epub \
+  output.epub \
+  --report reports/epub/tradecatlabs-notice-report.json
+```
+
+该工具的通过条件是：`content.opf`、`nav.xhtml`、`toc.ncx`、封面条目、元数据、manifest 数量、spine 数量、目录链接数量全部保持不变，只允许 `OPS/text/title.xhtml` 内容变化。
 
 ## 当前成品审计摘要
 
