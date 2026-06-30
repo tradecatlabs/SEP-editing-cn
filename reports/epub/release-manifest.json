@@ -41,5 +41,11 @@
     "name": "TradeCatLabs",
     "github": "https://github.com/tradecatlabs",
     "x": "https://x.com/tradecatlabs"
+  },
+  "release": {
+    "repo": "tradecatlabs/SEP-editing-cn",
+    "tag": "v2026.06.30",
+    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.06.30",
+    "epub_asset_name": "SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
   }
 }

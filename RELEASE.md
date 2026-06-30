@@ -31,22 +31,32 @@ reports/epub/release-manifest.json
 确认已经切到 TradeCatLabs 账号或具备 `tradecatlabs/SEP-editing-cn` 发布权限后执行：
 
 ```bash
+epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' | head -n 1)"
+epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
+cp "$epub_source" "$epub_asset"
+
 gh release create v2026.06.30 \
-  "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub" \
+  "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
+  "reports/epub/resource-manifest.json" \
   --repo tradecatlabs/SEP-editing-cn \
-  --title "斯坦福哲学百科全书（中文版） EPUB" \
-  --notes "EPUB artifact, release manifest, and audit report."
+  --title "SEP Chinese EPUB" \
+  --notes "EPUB artifact, release manifest, resource manifest, and audit report."
 ```
 
 如 Release 已存在，可改用：
 
 ```bash
+epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' | head -n 1)"
+epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
+cp "$epub_source" "$epub_asset"
+
 gh release upload v2026.06.30 \
-  "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub" \
+  "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
+  "reports/epub/resource-manifest.json" \
   --repo tradecatlabs/SEP-editing-cn \
   --clobber
 ```
