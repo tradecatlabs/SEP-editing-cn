@@ -1,0 +1,170 @@
+{
+  "input": "/home/lenovo/.projects/SEP-editing-cn/dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "output": "/home/lenovo/.projects/SEP-editing-cn/dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "backup": null,
+  "before": {
+    "sha256": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c",
+    "size": 109135501,
+    "bad_crc": null,
+    "first_entry": "mimetype",
+    "mimetype_uncompressed": true,
+    "metadata": {
+      "title": [
+        "斯坦福哲学百科全书（中文版）"
+      ],
+      "creator": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "publisher": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "language": [
+        "zh-CN"
+      ],
+      "date": [
+        "2026-06-30T16:00:00+00:00"
+      ],
+      "identifier": [
+        "issn:1095-5054",
+        "calibre:200",
+        "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+        "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+      ],
+      "rights": [
+        "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+      ],
+      "source": [
+        "Library of Congress Catalog Data: ISSN 1095-5054"
+      ]
+    },
+    "manifest_count": 3670,
+    "spine_count": 2618,
+    "xhtml_count": 2619,
+    "opf_sha256": "88d86aab8eaf46739fa28a784fe2747158f66ed19d2b4198ef93b0be67f74925",
+    "nav_sha256": "ef9f6bebb1256f0781cf66d70387097df8fa05cb6e02d355f9cf3aa0de6e05a5",
+    "ncx_sha256": "0a7fd2ee43ae671b4dca7b6ac68287878d422389fcf7878b972b65e1cdd9c6a9",
+    "nav_span_count": 30,
+    "nav_span_labels": [
+      "Table of contents",
+      "前言",
+      "关于",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+      "补遗与未列入主目录文档"
+    ],
+    "nav_link_count": 2618,
+    "nav_target_errors": [],
+    "ncx_navpoint_count": 2648,
+    "cover_items": [
+      {
+        "id": "cover",
+        "href": "OPS/cover.jpg",
+        "full": "OPS/OPS/cover.jpg",
+        "exists": true,
+        "sha256": "43d48aeb40ca06f3bb0b71c205044def57ed81b648de5e8740a3ded157ecb677",
+        "size": 126865
+      }
+    ]
+  },
+  "after": {
+    "sha256": "f1963040793a24295034d68b0479d92a5cf3dae2d45f13505e60bc26d9a13e80",
+    "size": 109135515,
+    "bad_crc": null,
+    "first_entry": "mimetype",
+    "mimetype_uncompressed": true,
+    "metadata": {
+      "title": [
+        "斯坦福哲学百科全书（中文版）"
+      ],
+      "creator": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "publisher": [
+        "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+      ],
+      "language": [
+        "zh-CN"
+      ],
+      "date": [
+        "2026-06-30T16:00:00+00:00"
+      ],
+      "identifier": [
+        "issn:1095-5054",
+        "calibre:200",
+        "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+        "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
+      ],
+      "rights": [
+        "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University."
+      ],
+      "source": [
+        "Library of Congress Catalog Data: ISSN 1095-5054"
+      ]
+    },
+    "manifest_count": 3670,
+    "spine_count": 2618,
+    "xhtml_count": 2619,
+    "opf_sha256": "88d86aab8eaf46739fa28a784fe2747158f66ed19d2b4198ef93b0be67f74925",
+    "nav_sha256": "6c302ae70c09e78733785ee34560170c6c80bba42b1d7cc68bfde0945133bb44",
+    "ncx_sha256": "0a7fd2ee43ae671b4dca7b6ac68287878d422389fcf7878b972b65e1cdd9c6a9",
+    "nav_span_count": 0,
+    "nav_span_labels": [],
+    "nav_link_count": 2648,
+    "nav_target_errors": [],
+    "ncx_navpoint_count": 2648,
+    "cover_items": [
+      {
+        "id": "cover",
+        "href": "OPS/cover.jpg",
+        "full": "OPS/OPS/cover.jpg",
+        "exists": true,
+        "sha256": "43d48aeb40ca06f3bb0b71c205044def57ed81b648de5e8740a3ded157ecb677",
+        "size": 126865
+      }
+    ]
+  },
+  "invariants_preserved": {
+    "metadata": true,
+    "manifest_count": true,
+    "spine_count": true,
+    "xhtml_count": true,
+    "opf_sha256": true,
+    "ncx_sha256": true,
+    "cover_items": true
+  },
+  "changed_payload": {
+    "nav_xhtml_changed": true,
+    "nav_span_count_before": 30,
+    "nav_span_count_after": 0,
+    "nav_link_count_before": 2618,
+    "nav_link_count_after": 2648,
+    "sha256_before": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c",
+    "sha256_after": "f1963040793a24295034d68b0479d92a5cf3dae2d45f13505e60bc26d9a13e80"
+  },
+  "temporary_output": "/home/lenovo/.projects/SEP-editing-cn/dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub.fixed-nav",
+  "operation": "patched temporary EPUB then replaced dist artifact"
+}

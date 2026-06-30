@@ -35,14 +35,16 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release create v2026.07.02 \
+gh release create v2026.07.03 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
   "reports/epub/resource-manifest.json" \
+  "reports/epub/tradecatlabs-notice-report.json" \
+  "reports/epub/nav-targets-report.json" \
   --repo tradecatlabs/SEP-editing-cn \
   --title "SEP Chinese EPUB" \
-  --notes "EPUB artifact, release manifest, resource manifest, and audit report."
+  --notes "EPUB artifact, release manifest, resource manifest, nav-target fix report, TradeCatLabs notice report, and audit report."
 ```
 
 如 Release 已存在，可改用：
@@ -52,11 +54,13 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release upload v2026.07.02 \
+gh release upload v2026.07.03 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
   "reports/epub/resource-manifest.json" \
+  "reports/epub/tradecatlabs-notice-report.json" \
+  "reports/epub/nav-targets-report.json" \
   --repo tradecatlabs/SEP-editing-cn \
   --clobber
 ```

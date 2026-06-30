@@ -828,6 +828,9 @@ def toc_node_to_nav(node: TocNode, current_page_dir: str = "") -> str:
     if node.page:
         href = posixpath.relpath(node.page.output_href, posixpath.dirname("nav.xhtml"))
         content = f'<a href="{html.escape(href)}">{label}</a>'
+    elif href := first_descendant_href(node):
+        href = posixpath.relpath(href, posixpath.dirname("nav.xhtml"))
+        content = f'<a href="{html.escape(href)}">{label}</a>'
     else:
         content = f"<span>{label}</span>"
     children = "".join(toc_node_to_nav(child) for child in node.children)

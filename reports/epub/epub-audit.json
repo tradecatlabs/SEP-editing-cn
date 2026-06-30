@@ -1,4 +1,5 @@
 {
+  "generated_at": "2026-06-30T22:34:14.036836+00:00",
   "epub_path": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
   "resource_error_count": 0,
   "resource_placeholder_count": 28,
@@ -7,13 +8,15 @@
   "zip": {
     "entry_count": 3701,
     "first_entry": "mimetype",
-    "mimetype_ok": true
+    "mimetype_ok": true,
+    "bad_crc": null
   },
   "epub": {
     "opf_path": "OPS/content.opf",
     "manifest_count": 3670,
     "missing_manifest_count": 0,
     "missing_manifest": [],
+    "spine_count": 2618,
     "spine_missing_count": 0,
     "spine_missing": [],
     "xhtml_count": 2619,
@@ -22,10 +25,15 @@
     "image_ref_count": 7874,
     "missing_image_count": 0,
     "missing_images": [],
-    "href_ref_count": 52192,
+    "href_ref_count": 54841,
     "external_link_count": 45133,
     "broken_internal_count": 0,
-    "broken_internal": []
+    "broken_internal": [],
+    "nav_span_count": 0,
+    "nav_span_labels": [],
+    "nav_link_count": 2648,
+    "nav_target_error_count": 0,
+    "nav_target_errors": []
   },
   "metadata": {
     "title": [
@@ -61,5 +69,23 @@
     "present": true,
     "method": "title_page_patch_preserving_opf_nav_ncx_cover"
   },
-  "passed": true
+  "nav_target_fix": {
+    "report": "reports/epub/nav-targets-report.json",
+    "method": "parent_toc_span_to_first_child_href_preserving_opf_ncx_cover_metadata",
+    "nav_span_count_before": 30,
+    "nav_span_count_after": 0,
+    "nav_link_count_before": 2618,
+    "nav_link_count_after": 2648,
+    "invariants_preserved": {
+      "metadata": true,
+      "manifest_count": true,
+      "spine_count": true,
+      "xhtml_count": true,
+      "opf_sha256": true,
+      "ncx_sha256": true,
+      "cover_items": true
+    }
+  },
+  "passed": true,
+  "resource_fallback_count_note": "历史发布审计保留值；resource-manifest.json 当前未显式区分 fallback 匹配字段，本次 nav 修复不重算资源锁定结果。"
 }

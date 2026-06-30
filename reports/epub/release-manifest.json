@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-30T22:14:51.209681+00:00",
+  "generated_at": "2026-06-30T22:34:14.036836+00:00",
   "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
-  "size": 109135501,
-  "sha256": "4e1a88491490d784a0ec19f705bc3d04bafb71cb55c460802fbc6713404d480c",
+  "size": 109135515,
+  "sha256": "f1963040793a24295034d68b0479d92a5cf3dae2d45f13505e60bc26d9a13e80",
   "zip_bad_crc": null,
   "first_entry": "mimetype",
   "first_entry_uncompressed": true,
@@ -40,6 +40,23 @@
     "present": true,
     "method": "title_page_patch_preserving_opf_nav_ncx_cover"
   },
+  "nav_target_fix": {
+    "report": "reports/epub/nav-targets-report.json",
+    "method": "parent_toc_span_to_first_child_href_preserving_opf_ncx_cover_metadata",
+    "nav_span_count_before": 30,
+    "nav_span_count_after": 0,
+    "nav_link_count_before": 2618,
+    "nav_link_count_after": 2648,
+    "invariants_preserved": {
+      "metadata": true,
+      "manifest_count": true,
+      "spine_count": true,
+      "xhtml_count": true,
+      "opf_sha256": true,
+      "ncx_sha256": true,
+      "cover_items": true
+    }
+  },
   "upstream": {
     "sep_cn": "https://github.com/Rivensa/SEP-CN",
     "sep_copyright": "The Stanford Encyclopedia of Philosophy is copyright © 2026 by The Metaphysics Research Lab, Department of Philosophy, Stanford University.",
@@ -48,12 +65,13 @@
   "publisher_lab": {
     "name": "TradeCatLabs",
     "github": "https://github.com/tradecatlabs",
-    "x": "https://x.com/tradecatlabs"
+    "x": "https://x.com/tradecatlabs",
+    "pi_x": "https://x.com/123olp"
   },
   "release": {
     "repo": "tradecatlabs/SEP-editing-cn",
-    "tag": "v2026.07.02",
-    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.02",
+    "tag": "v2026.07.03",
+    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.03",
     "epub_asset_name": "SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
   }
 }

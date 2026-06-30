@@ -8,6 +8,7 @@
 
 - `tools/build_sep_epub.py`：EPUB 构建、资源锁定、打包与审计工具。
 - `tools/patch_epub_tradecatlabs_notice.py`：只修改标题页正文提示，并验证 OPF、nav、NCX、封面、manifest、spine 不变。
+- `tools/patch_epub_nav_targets.py`：把 EPUB3 `nav.xhtml` 中没有 `href` 的父级目录项指向首个子目录页面，并验证 OPF、NCX、封面、元数据、manifest、spine 不变。
 - `dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub`：当前本地 EPUB 成品；不直接进入 Git 历史，发布时作为 GitHub Release 附件上传。
 - `reports/epub/`：发布清单、资源清单、孤儿页面清单与 EPUB 审计报告。
 - `source/SEP-CN`：指向上游资料源的软链接，不是正文副本。
@@ -91,11 +92,23 @@ python3 tools/patch_epub_tradecatlabs_notice.py \
 
 该工具的通过条件是：`content.opf`、`nav.xhtml`、`toc.ncx`、封面条目、元数据、manifest 数量、spine 数量、目录链接数量全部保持不变，只允许 `OPS/text/title.xhtml` 内容变化。
 
+## 修复 EPUB3 nav 父级目录无目标项
+
+```bash
+python3 tools/patch_epub_nav_targets.py \
+  input.epub \
+  output.epub \
+  --report reports/epub/nav-targets-report.json
+```
+
+该工具只允许修改 `OPS/nav.xhtml`：把 `Table of contents`、字母分组等父级目录项从无目标 `span` 转为指向首个子项的 `a href`。通过条件是 OPF、NCX、封面、元数据、manifest 数量、spine 数量、XHTML 数量全部不变，且 `nav.xhtml` 内部链接坏目标为 0。
+
 ## 当前成品审计摘要
 
 - EPUB XML 错误：0
 - 缺失图片：0
 - 内部坏链：0
+- EPUB3 nav 无目标目录项：0
 - 资源下载/锁定错误：0
 - 资源总数：1095
 - 源站失效但已占位保底图片：28

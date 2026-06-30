@@ -78,3 +78,87 @@ H1 与 H2 共同成立：错误路径是“重建整个 EPUB 并新增 spine/nav
 
 - 桌面 EPUB 修复报告：`C:\Users\13208\Desktop\SEP-EPUB-tradecatlabs-fix-report.json`
 - 验证结果：补丁后仅 `OPS/text/title.xhtml` 内容哈希变化；OPF/nav/NCX/封面/元数据/目录数量均不变。
+
+---
+
+# EPUB3 nav 父级目录无目标回归调试记录
+
+## Bug
+
+Calibre 目录编辑器显示 `Table of contents` 等父级目录项“指向位置：None / 此项指向的位置不存在”。这些父级项在 EPUB3 `OPS/nav.xhtml` 中是 `<span>`，不是带 `href` 的 `<a>`。
+
+## Environment
+
+- 本地成品：`dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub`
+- 观察工具：Calibre 目录编辑器、Python `zipfile`、`xml.etree.ElementTree`
+- 结构文件：`OPS/nav.xhtml`、`OPS/toc.ncx`、`OPS/content.opf`
+
+## Reproduction
+
+1. 解包并读取 `OPS/nav.xhtml`。
+2. 统计目录内 `<span>` 与 `<a href>` 数量。
+3. 对照 `OPS/toc.ncx` 中 `navPoint` 数量。
+
+## Observations
+
+- 修复前 `nav.xhtml` 中有 30 个无目标 `<span>`：`Table of contents`、`前言`、`关于`、`A` 到 `Z`、`补遗与未列入主目录文档`。
+- 修复前 `nav.xhtml` 链接数为 `2618`，`toc.ncx` navPoint 数为 `2648`。
+- Calibre 对 EPUB3 nav 中的无目标父级 `<span>` 显示为 `None`，即使其子项可以展开。
+- OPF、NCX、封面、元数据、manifest、spine 本身没有损坏。
+
+## Hypotheses
+
+### H1 EPUB3 nav 父级 `<span>` 是目录无目标的根因
+
+- Supports：30 个 Calibre 红色目录项与 30 个 nav `<span>` 一一对应。
+- Conflicts：子目录可展开，说明不是整个 TOC 缺失。
+- Test：把父级 `<span>` 指向首个子目录页面，验证红色无目标项消失。
+
+### H2 OPF manifest/spine 缺项导致目录目标不存在
+
+- Supports：Calibre 文案是“位置不存在”。
+- Conflicts：内部目标校验为 0 个坏链，manifest/spine 计数稳定。
+- Test：保持 OPF 不变，仅修改 nav。
+
+### H3 NCX 与 nav 数量不一致导致 Calibre 报错
+
+- Supports：修复前 nav 链接数 `2618`，NCX navPoint 数 `2648`。
+- Conflicts：差值刚好等于 nav `<span>` 数量，说明不是 NCX 多出真实页面，而是 nav 父级没 href。
+- Test：修复后 nav 链接数应变为 `2648`。
+
+## ROOT HYPOTHESIS
+
+H1 与 H3 成立：构建器把分组父节点输出为 EPUB3 nav `<span>`，但 Calibre/iOS 这类严格目录工具期望每个 TOC 节点都有可落地目标；正确做法是让分组父节点指向首个子页面。
+
+## Experiments
+
+### E1 最小修复既有 EPUB 的 nav.xhtml
+
+- Hypothesis：H1
+- Action：只修改 `OPS/nav.xhtml`，把父级目录 `<span>` 转为指向首个子项的 `<a href>`。
+- Expected：`nav_span_count` 从 30 变为 0，OPF、NCX、封面、元数据和 spine 不变。
+- Result：通过；`nav_span_count: 30 -> 0`，`nav_link_count: 2618 -> 2648`。
+
+### E2 验证结构不变量
+
+- Hypothesis：H2
+- Action：对比修复前后 OPF、NCX、封面、元数据、manifest 数量、spine 数量和 XHTML 数量。
+- Expected：除 `OPS/nav.xhtml` 外结构不变量不变，内部链接坏目标为 0。
+- Result：通过；`nav_target_errors=[]`，OPF/NCX/封面 SHA 均保持不变。
+
+## Root Cause
+
+根因是构建器对有子项但没有自身页面的 TOC 分组节点输出无目标 `<span>`，导致严格目录编辑器把这些父级项显示为不存在的位置。
+
+## Fix
+
+- 更新 `tools/build_sep_epub.py`：无自身页面但有子页面的 TOC 节点，输出指向首个子页面的 `<a href>`。
+- 新增 `tools/patch_epub_nav_targets.py`：用 XML/DOM 结构化方式修复既有成品 `OPS/nav.xhtml`，并守住 OPF、NCX、封面、元数据、manifest、spine 不变量。
+- 更新 README、构建说明、发布流程和 AGENTS 规则，把“EPUB3 nav 父级节点必须有目标”写成长期门禁。
+
+## Regression Evidence
+
+- 修复报告：`reports/epub/nav-targets-report.json`
+- 修复后成品 SHA256：`f1963040793a24295034d68b0479d92a5cf3dae2d45f13505e60bc26d9a13e80`
+- 验证结果：`nav_span_count=0`、`nav_link_count=2648`、`nav_target_errors=[]`、OPF/NCX/封面/元数据保持不变。
+- 回归样本：最小 EPUB fixture 中父级目录 `span -> a href` 后，`nav_span_count: 1 -> 0`、`nav_link_count: 1 -> 2`，结构不变量保持。

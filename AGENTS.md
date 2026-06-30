@@ -16,8 +16,10 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息与项目职责
 ├── .github/                          # Issue 模板与 PR 模板
 ├── docs/README_PATTERNS.md           # README 调研、同类项目模式与目录结构沉淀
+├── docs/SOURCE_GAPS.md               # 用户提供的待补充资料缺口备忘
 ├── source/SEP-CN                     # 指向上游资料源的软链接，不是正文副本
 ├── tools/build_sep_epub.py           # 标准 EPUB 构建、资源锁定与审计工具
+├── tools/patch_epub_nav_targets.py   # 修复 nav.xhtml 父级目录无目标项并守住结构不变量
 ├── tools/patch_epub_tradecatlabs_notice.py # 保持元数据、封面和目录不变的标题页补丁工具
 ├── reports/epub/                     # 已发布产物对应的发布清单与审计证据
 ├── build/epub/                       # 本地构建中间产物，不提交
@@ -35,13 +37,14 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - EPUB 标题元数据必须使用 `斯坦福哲学百科全书（中文版）`。
 - EPUB 作者/创建者元数据必须使用 `The Metaphysics Research Lab, Department of Philosophy, Stanford University`，并保留 `ISSN 1095-5054`。
 - TradeCatLabs 正文说明只能通过 `tools/patch_epub_tradecatlabs_notice.py` 写入既有标题页，不得新增 spine/nav 页面，不得改动 OPF 元数据、封面、manifest、spine、nav 或 NCX。
+- EPUB3 nav 父级目录项不得使用无目标 `span` 作为最终发布形态；分组节点必须指向首个子页面，既有成品用 `tools/patch_epub_nav_targets.py` 最小修复。
 - TradeCatLabs 展示信息集中维护在 `TRADECATLABS.md`，供应链声明集中维护在 `SUPPLY_CHAIN.md`。
 - README 调研依据与目录结构模式集中维护在 `docs/README_PATTERNS.md`。
 - 贡献边界和 Issue/PR 入口分别维护在 `CONTRIBUTING.md` 与 `.github/`。
 
 ## 维护规则
 
-- 修改 `tools/*.py` 后必须运行 `python3 -m py_compile tools/build_sep_epub.py tools/patch_epub_tradecatlabs_notice.py`。
+- 修改 `tools/*.py` 后必须运行 `python3 -m py_compile tools/build_sep_epub.py tools/patch_epub_tradecatlabs_notice.py tools/patch_epub_nav_targets.py`。
 - 重新发布 EPUB 前必须用真实 SEP-CN 克隆目录运行完整构建。
 - 发布前必须确认 `epub-audit.json` 中 XML 错误、缺失图片、内部坏链、资源错误均为 0。
 - 不要把上游 SEP-CN 正文目录复制进本仓库；需要内容源时克隆到 `.source/SEP-CN` 或使用外部路径并通过 `--root` 指定。
