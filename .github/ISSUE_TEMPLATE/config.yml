@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: SEP-CN upstream content source
+    url: https://github.com/Rivensa/SEP-CN
+    about: Translation, source Markdown, and content issues should go to the upstream repository.
+  - name: TradeCatLabs
+    url: https://github.com/tradecatlabs
+    about: TradeCatLabs GitHub organization.

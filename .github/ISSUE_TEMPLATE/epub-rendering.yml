@@ -1,0 +1,53 @@
+name: EPUB rendering issue
+description: Report an EPUB display, navigation, reader compatibility, or structure problem.
+title: "[EPUB] "
+labels:
+  - epub
+  - rendering
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请提供可复现信息。正文翻译问题请优先反馈到上游 SEP-CN。
+  - type: input
+    id: release
+    attributes:
+      label: Release version
+      description: 例如 v2026.06.30
+      placeholder: v2026.06.30
+    validations:
+      required: true
+  - type: input
+    id: reader
+    attributes:
+      label: Reader and platform
+      description: 阅读器和平台，例如 iOS Books 18.x / Calibre / Kindle Previewer。
+      placeholder: iOS Books on iPhone
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: 描述异常现象、章节位置、是否有截图。
+      placeholder: 打开第 X 章时目录跳转失败 / 图片缺失 / XHTML 报错
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: 写出最短复现步骤。
+      placeholder: |
+        1. 下载 Release 中的 EPUB
+        2. 导入 iOS Books
+        3. 打开目录并点击 ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: 可粘贴截图描述、错误文本、章节名或日志。
+    validations:
+      required: false

@@ -101,16 +101,24 @@ python3 tools/build_sep_epub.py \
 python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only
 ```
 
+## 反馈与贡献
+
+- EPUB 阅读器显示、目录、图片、元数据和构建问题：请在本仓库提交 Issue。
+- 正文翻译、词条内容和 Markdown 原文问题：请优先反馈到上游 `Rivensa/SEP-CN`。
+- 贡献前请阅读 `CONTRIBUTING.md`。
+
 ## 仓库结构
 
 ```text
 .
+├── CONTRIBUTING.md                   # 贡献和问题反馈边界
 ├── README.md                         # 项目入口、下载和状态说明
 ├── README-EPUB.md                    # EPUB 构建与审计说明
 ├── RELEASE.md                        # Release 附件发布流程
 ├── SOURCE.md                         # 上游资料源与版权边界
 ├── SUPPLY_CHAIN.md                   # 资源供应链与上下游说明
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息
+├── .github/                          # Issue 模板与 PR 模板
 ├── docs/README_PATTERNS.md           # README 调研与项目目录模式沉淀
 ├── dist/README.md                    # 本地 EPUB 产物目录说明
 ├── reports/epub/                     # 发布清单、资源清单、审计报告

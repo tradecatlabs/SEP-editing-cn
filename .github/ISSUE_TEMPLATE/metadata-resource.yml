@@ -1,0 +1,33 @@
+name: Metadata or resource issue
+description: Report metadata, supply-chain, manifest, image, or release evidence issues.
+title: "[Metadata/Resource] "
+labels:
+  - metadata
+  - resources
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - EPUB metadata
+        - Image or resource manifest
+        - Release manifest
+        - Supply chain documentation
+        - Copyright/source boundary
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: 描述具体问题与影响。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: 你认为应该如何修正。
+    validations:
+      required: false
