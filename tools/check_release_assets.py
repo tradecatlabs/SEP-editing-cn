@@ -143,10 +143,10 @@ def main() -> int:
                 token,
                 arguments.timeout,
             )
-        if remote_sha256 != expected_manifest.get("sha256"):
-            fail(f"远端 EPUB SHA256 不一致：{remote_sha256}")
         if remote_size != expected_manifest.get("size"):
             fail(f"远端 EPUB size 不一致：{remote_size}")
+        if remote_sha256 != expected_manifest.get("sha256"):
+            fail(f"远端 EPUB SHA256 不一致：{remote_sha256}")
 
     print(f"OK: Release {release_tag} 附件与本地发布清单一致")
     return 0
