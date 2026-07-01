@@ -20,7 +20,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 ├── SUPPLY_CHAIN.md                   # 资源供应链、上下游与发布边界
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息与项目职责
 ├── requirements.txt                  # Python 构建依赖
-├── .github/                          # Issue 模板、PR 模板与 GitHub Actions
+├── .github/                          # Issue 模板、PR 模板、Dependabot 与 GitHub Actions
 ├── docs/LESSONS.md                   # EPUB 事故复盘、长期门禁与执行清单
 ├── docs/README_PATTERNS.md           # README 调研、同类项目模式与目录结构沉淀
 ├── docs/SOURCE_GAPS.md               # 用户提供的待补充资料缺口备忘

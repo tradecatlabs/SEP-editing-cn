@@ -27,6 +27,7 @@ REQUIRED_ROOT_FILES = [
 
 REQUIRED_GITHUB_FILES = [
     ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/dependabot.yml",
     ".github/ISSUE_TEMPLATE/build-problem.yml",
     ".github/ISSUE_TEMPLATE/epub-rendering.yml",
     ".github/ISSUE_TEMPLATE/metadata-resource.yml",
