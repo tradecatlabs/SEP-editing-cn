@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-07-01T15:21:47Z",
+  "old_reference": "C:\\Users\\13208\\Downloads\\斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "old_sha256": "2c2018284859834c0543a73094099035e2ba68761ddc5050e9a8294483c51bea",
+  "new_artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "new_sha256": "3b9245be7b836adc2ea448a3cfbf82af40ab425ff5a2974fa76e835f5515730f",
+  "added_entries": [],
+  "removed_entries": [],
+  "changed_entries": [
+    "OPS/content.opf",
+    "OPS/text/title.xhtml"
+  ],
+  "normative_changes": [
+    "标题页 TradeCatLabs/负责人信息从三行归一为两行",
+    "标题页第二行使用工程仓库 + X：@123olp",
+    "不再在标题页展示 @tradecatlabs 或单独“实验室负责人”段落",
+    "OPF 描述文案、title-type/file-as、accessibility 元数据和 modified 时间保留为标准审计对象"
+  ],
+  "volatile_changes": [
+    "calibre:* identifier",
+    "uuid:* identifier",
+    "dcterms:modified 时间戳"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-01T15:21:47Z",
+  "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "absolute_path": "\\\\wsl.localhost\\Ubuntu\\home\\lenovo\\.projects\\SEP-editing-cn\\dist\\斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "size": 109146373,
+  "sha256": "3b9245be7b836adc2ea448a3cfbf82af40ab425ff5a2974fa76e835f5515730f",
+  "passed": true,
+  "blockers": [],
+  "metadata_completion": {
+    "description_count": 1,
+    "subject_count": 6,
+    "accessibility_meta_count": 10,
+    "title": [
+      "斯坦福哲学百科全书（中文版）"
+    ],
+    "creator": [
+      "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
+    ]
+  },
+  "structure_completion": {
+    "nav_has_landmarks": true,
+    "nav_span_count": 0,
+    "nav_target_error_count": 0,
+    "ncx_target_error_count": 0,
+    "missing_alt_count": 0,
+    "xml_error_count": 0,
+    "missing_manifest_count": 0,
+    "spine_missing_count": 0,
+    "missing_link_count": 0,
+    "internal_target_missing_count": 0,
+    "missing_css_url_count": 0
+  },
+  "title_page": {
+    "display_title_present": true,
+    "tradecatlabs_present": true,
+    "repo_link_present": true,
+    "pi_x_present": true,
+    "lab_x_present": false,
+    "separate_pi_label_present": false,
+    "standard_two_line_notice": true
+  },
+  "zip": {
+    "entry_count": 3701,
+    "first_entry": "mimetype",
+    "mimetype_ok": true,
+    "mimetype_uncompressed": true,
+    "bad_crc": null
+  },
+  "epubcheck": {
+    "ran": false,
+    "java": null,
+    "epubcheck": null,
+    "reason": "本机未安装 Java，且用户已明确不安装 Java；因此没有运行官方 EPUBCheck。"
+  },
+  "standards_sources": [
+    "https://www.w3.org/TR/epub-33/",
+    "https://www.w3.org/TR/epub-a11y-11/",
+    "https://github.com/w3c/epubcheck"
+  ]
+}

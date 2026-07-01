@@ -1,39 +1,17 @@
 {
-  "generated_at": "2026-06-30T22:34:14.036836+00:00",
-  "epub_path": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
-  "resource_error_count": 0,
-  "resource_placeholder_count": 28,
-  "resource_fallback_count": 23,
-  "resource_count": 1095,
+  "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "absolute_path": "\\\\wsl.localhost\\Ubuntu\\home\\lenovo\\.projects\\SEP-editing-cn\\dist\\斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
+  "size": 109146373,
+  "sha256": "3b9245be7b836adc2ea448a3cfbf82af40ab425ff5a2974fa76e835f5515730f",
   "zip": {
     "entry_count": 3701,
     "first_entry": "mimetype",
     "mimetype_ok": true,
+    "mimetype_uncompressed": true,
     "bad_crc": null
   },
-  "epub": {
-    "opf_path": "OPS/content.opf",
-    "manifest_count": 3670,
-    "missing_manifest_count": 0,
-    "missing_manifest": [],
-    "spine_count": 2618,
-    "spine_missing_count": 0,
-    "spine_missing": [],
-    "xhtml_count": 2619,
-    "xml_error_count": 0,
-    "xml_errors": [],
-    "image_ref_count": 7874,
-    "missing_image_count": 0,
-    "missing_images": [],
-    "href_ref_count": 54841,
-    "external_link_count": 45133,
-    "broken_internal_count": 0,
-    "broken_internal": [],
-    "nav_span_count": 0,
-    "nav_span_labels": [],
-    "nav_link_count": 2648,
-    "nav_target_error_count": 0,
-    "nav_target_errors": []
+  "container": {
+    "rootfile": "OPS/content.opf"
   },
   "metadata": {
     "title": [
@@ -53,8 +31,8 @@
     ],
     "identifier": [
       "issn:1095-5054",
-      "calibre:200",
-      "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+      "calibre:207",
+      "uuid:d3dcc0cb-e7c2-4fb2-9a5b-7451e0848af5",
       "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
     ],
     "language": [
@@ -62,13 +40,92 @@
     ],
     "date": [
       "2026-06-30T16:00:00+00:00"
+    ],
+    "description_count": 1,
+    "subject_count": 6,
+    "accessibility_meta_count": 10,
+    "accessibility_meta": [
+      "schema:accessMode",
+      "schema:accessMode",
+      "schema:accessModeSufficient",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityHazard",
+      "schema:accessibilitySummary"
+    ],
+    "modified": [
+      "2026-07-01T15:14:08Z"
     ]
   },
-  "tradecatlabs_notice": {
-    "entry": "OPS/text/title.xhtml",
-    "present": true,
-    "method": "title_page_patch_preserving_opf_nav_ncx_cover"
+  "epub": {
+    "opf_path": "OPS/content.opf",
+    "manifest_count": 3670,
+    "missing_manifest_count": 0,
+    "missing_manifest": [],
+    "spine_count": 2618,
+    "spine_missing_count": 0,
+    "spine_missing": [],
+    "xhtml_count": 2619,
+    "xml_error_count": 0,
+    "xml_errors": [],
+    "css_file_count": 1,
+    "missing_alt_count": 0,
+    "missing_alt": [],
+    "missing_link_count": 0,
+    "missing_links": [],
+    "internal_target_missing_count": 0,
+    "internal_target_missing": [],
+    "missing_stylesheet_count": 0,
+    "missing_script_count": 0,
+    "missing_css_url_count": 0,
+    "nav_file": "OPS/nav.xhtml",
+    "nav_link_count": 2648,
+    "nav_span_count": 0,
+    "nav_types": [
+      "toc",
+      "landmarks"
+    ],
+    "nav_has_landmarks": true,
+    "nav_target_error_count": 0,
+    "nav_target_errors": [],
+    "ncx_file": "OPS/toc.ncx",
+    "ncx_link_count": 2645,
+    "ncx_target_error_count": 0,
+    "ncx_target_errors": [],
+    "cover_items": [
+      [
+        "cover",
+        "OPS/OPS/cover.jpg",
+        "image/jpeg",
+        "cover-image"
+      ]
+    ]
   },
+  "title_page": {
+    "display_title_present": true,
+    "tradecatlabs_present": true,
+    "repo_link_present": true,
+    "pi_x_present": true,
+    "lab_x_present": false,
+    "separate_pi_label_present": false,
+    "standard_two_line_notice": true
+  },
+  "epubcheck": {
+    "ran": false,
+    "java": null,
+    "epubcheck": null,
+    "reason": "本机未安装 Java，且用户已明确不安装 Java；因此没有运行官方 EPUBCheck。"
+  },
+  "passed": true,
+  "blockers": [],
+  "generated_at": "2026-07-01T15:21:47Z",
+  "resource_error_count": 0,
+  "resource_placeholder_count": 28,
+  "resource_fallback_count": 23,
+  "resource_count": 1095,
   "nav_target_fix": {
     "report": "reports/epub/nav-targets-report.json",
     "method": "parent_toc_span_to_first_child_href_preserving_opf_ncx_cover_metadata",
@@ -86,6 +143,9 @@
       "cover_items": true
     }
   },
-  "passed": true,
-  "resource_fallback_count_note": "历史发布审计保留值；resource-manifest.json 当前未显式区分 fallback 匹配字段，本次 nav 修复不重算资源锁定结果。"
+  "standards_sources": [
+    "https://www.w3.org/TR/epub-33/",
+    "https://www.w3.org/TR/epub-a11y-11/",
+    "https://github.com/w3c/epubcheck"
+  ]
 }

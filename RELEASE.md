@@ -39,12 +39,14 @@ gh release create v2026.07.03 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
+  "reports/epub/completion-report.json" \
+  "reports/epub/user-style-diff-report.json" \
   "reports/epub/resource-manifest.json" \
   "reports/epub/tradecatlabs-notice-report.json" \
   "reports/epub/nav-targets-report.json" \
   --repo tradecatlabs/SEP-editing-cn \
   --title "SEP Chinese EPUB" \
-  --notes "EPUB artifact, release manifest, resource manifest, nav-target fix report, TradeCatLabs notice report, and audit report."
+  --notes "EPUB artifact, release manifest, completion report, user style diff report, resource manifest, nav-target fix report, TradeCatLabs notice report, and audit report."
 ```
 
 如 Release 已存在，可改用：
@@ -58,6 +60,8 @@ gh release upload v2026.07.03 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
+  "reports/epub/completion-report.json" \
+  "reports/epub/user-style-diff-report.json" \
   "reports/epub/resource-manifest.json" \
   "reports/epub/tradecatlabs-notice-report.json" \
   "reports/epub/nav-targets-report.json" \

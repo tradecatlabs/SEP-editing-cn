@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import posixpath
+import re
 import shutil
 import tempfile
 import zipfile
@@ -16,8 +17,12 @@ import xml.etree.ElementTree as ET
 
 TITLE_ENTRY = "OPS/text/title.xhtml"
 MARKER = "tradecatlabs/SEP-editing-cn"
-NOTICE = """  <p>EPUB 工程整理、资源锁定与发布审计：<a href="https://github.com/tradecatlabs">TradeCatLabs</a>。</p>
-  <p>工程仓库：<a href="https://github.com/tradecatlabs/SEP-editing-cn">tradecatlabs/SEP-editing-cn</a>；X：<a href="https://x.com/tradecatlabs">@tradecatlabs</a>。</p>"""
+NOTICE = """  <p>EPUB 工程整理、资源锁定与发布审计：<a href="https://github.com/tradecatlabs">TradeCatLabs</a></p>
+  <p>工程仓库：<a href="https://github.com/tradecatlabs/SEP-editing-cn">tradecatlabs/SEP-editing-cn</a>；X：<a href="https://x.com/123olp">@123olp</a></p>"""
+NOTICE_LINE_RE = re.compile(
+    r"\n  <p>(?:EPUB 工程整理、资源锁定与发布审计：|工程仓库：|实验室负责人：).*?</p>",
+    re.DOTALL,
+)
 OPF_NS = {
     "opf": "http://www.idpf.org/2007/opf",
     "dc": "http://purl.org/dc/elements/1.1/",
@@ -124,10 +129,11 @@ def inspect_epub(epub_path: Path) -> dict:
 
 def patch_title(raw: bytes) -> bytes:
     text = raw.decode("utf-8")
-    if MARKER in text:
+    if NOTICE in text:
         return raw
     if "</section>" not in text:
         raise RuntimeError(f"{TITLE_ENTRY} 缺少 </section>，拒绝盲改")
+    text = NOTICE_LINE_RE.sub("", text)
     text = text.replace("</section>", NOTICE + "\n</section>", 1)
     ET.fromstring(text.encode("utf-8"))
     return text.encode("utf-8")

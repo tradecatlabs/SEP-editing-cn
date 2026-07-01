@@ -30,6 +30,7 @@ from lxml import html as lxml_html
 
 
 PROJECT_TITLE = "斯坦福哲学百科全书（中文版）"
+PROJECT_DISPLAY_TITLE = "斯坦福哲学百科全书简体中文版"
 PROJECT_CREATOR = "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
 PROJECT_PUBLISHER = "The Metaphysics Research Lab, Department of Philosophy, Stanford University"
 PROJECT_RIGHTS = (
@@ -38,6 +39,37 @@ PROJECT_RIGHTS = (
 )
 PROJECT_ISSN = "1095-5054"
 PROJECT_SOURCE = "Library of Congress Catalog Data: ISSN 1095-5054"
+PROJECT_DATE = "2026-06-30T16:00:00+00:00"
+PROJECT_DESCRIPTION = (
+    "《斯坦福哲学百科全书（中文版）》是基于 SEP-CN 项目内容整理的离线 EPUB，"
+    "面向哲学学习、研究与检索阅读；本版本保留 Stanford Encyclopedia of Philosophy "
+    "的来源、版权与 ISSN 元信息，并由 TradeCatLabs 进行 EPUB 工程整理、资源锁定与发布审计。"
+)
+PROJECT_SUBJECTS = [
+    "哲学",
+    "百科全书",
+    "Stanford Encyclopedia of Philosophy",
+    "SEP-CN",
+    "中文",
+    "简体中文",
+]
+ACCESSIBILITY_METADATA = [
+    ("schema:accessMode", "textual"),
+    ("schema:accessMode", "visual"),
+    ("schema:accessModeSufficient", "textual"),
+    ("schema:accessibilityFeature", "tableOfContents"),
+    ("schema:accessibilityFeature", "readingOrder"),
+    ("schema:accessibilityFeature", "structuralNavigation"),
+    ("schema:accessibilityFeature", "alternativeText"),
+    ("schema:accessibilityFeature", "displayTransformability"),
+    ("schema:accessibilityHazard", "none"),
+    (
+        "schema:accessibilitySummary",
+        "本 EPUB 为可重排文本，提供目录、结构化阅读顺序和图片替代文本；"
+        "少量原始资料中缺失替代文本的图像已补充通用替代文本，后续可由人工校订为更精确描述；"
+        "未进行第三方无障碍认证。",
+    ),
+]
 PROJECT_OUTPUT_NAME = f"{PROJECT_TITLE} - {PROJECT_CREATOR}.epub"
 LANGUAGE = "zh-CN"
 USER_AGENT = "SEP-CN-EPUB-Builder/1.0"
@@ -674,6 +706,9 @@ def normalize_fragment(fragment: str) -> str:
     parent = lxml_html.fragment_fromstring(fragment or "<p></p>", create_parent="div")
     etree.strip_elements(parent, "script", "style", with_tail=False)
     wrap_tables(parent)
+    for image in parent.xpath(".//img"):
+        if not (image.get("alt") or "").strip():
+            image.set("alt", "插图")
     body = "".join(etree.tostring(child, encoding="unicode", method="xml") for child in parent)
     return body
 
@@ -816,11 +851,13 @@ th, td {
         encoding="utf-8",
     )
     title_body = f"""<section class="title-page" epub:type="titlepage">
-  <h1>{html.escape(PROJECT_TITLE)}</h1>
+  <h1>{html.escape(PROJECT_DISPLAY_TITLE)}</h1>
   <p>基于 SEP-CN 项目内容生成的离线 EPUB。</p>
   <p>构建时间：{dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+  <p>EPUB 工程整理、资源锁定与发布审计：<a href="https://github.com/tradecatlabs">TradeCatLabs</a></p>
+  <p>工程仓库：<a href="https://github.com/tradecatlabs/SEP-editing-cn">tradecatlabs/SEP-editing-cn</a>；X：<a href="https://x.com/123olp">@123olp</a></p>
 </section>"""
-    write_xhtml(ops_dir / "text" / "title.xhtml", PROJECT_TITLE, title_body)
+    write_xhtml(ops_dir / "text" / "title.xhtml", PROJECT_DISPLAY_TITLE, title_body)
 
 
 def toc_node_to_nav(node: TocNode, current_page_dir: str = "") -> str:
@@ -839,12 +876,22 @@ def toc_node_to_nav(node: TocNode, current_page_dir: str = "") -> str:
     return f"<li>{content}</li>"
 
 
-def write_nav(toc_roots: list[TocNode], work_dir: Path) -> None:
+def write_nav(toc_roots: list[TocNode], pages: list[Page], work_dir: Path) -> None:
+    first_body_href = pages[0].output_href if pages else "text/title.xhtml"
+    first_body_href = posixpath.relpath(first_body_href, posixpath.dirname("nav.xhtml"))
     body = f"""<nav epub:type="toc" id="toc">
   <h1>目录</h1>
   <ol>
     <li><a href="text/title.xhtml">{html.escape(PROJECT_TITLE)}</a></li>
     {''.join(toc_node_to_nav(node) for node in toc_roots)}
+  </ol>
+</nav>
+<nav epub:type="landmarks" id="landmarks">
+  <h1>阅读入口</h1>
+  <ol>
+    <li><a epub:type="titlepage" href="text/title.xhtml">标题页</a></li>
+    <li><a epub:type="toc" href="nav.xhtml">目录</a></li>
+    <li><a epub:type="bodymatter" href="{html.escape(first_body_href)}">正文</a></li>
   </ol>
 </nav>"""
     write_xhtml(work_dir / "OPS" / "nav.xhtml", "目录", body, css_href="styles/sep.css")
@@ -905,6 +952,11 @@ def manifest_id(index: int, prefix: str = "item") -> str:
 def write_opf(pages: list[Page], resources: dict[str, Resource], work_dir: Path, book_id: str) -> None:
     ops_dir = work_dir / "OPS"
     modified = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    subject_xml = "\n".join(f"    <dc:subject>{html.escape(subject)}</dc:subject>" for subject in PROJECT_SUBJECTS)
+    accessibility_xml = "\n".join(
+        f'    <meta property="{html.escape(prop)}">{html.escape(value)}</meta>'
+        for prop, value in ACCESSIBILITY_METADATA
+    )
     manifest_items: list[tuple[str, str, str, str]] = [
         ("nav", "nav.xhtml", "application/xhtml+xml", ' properties="nav"'),
         ("ncx", "toc.ncx", "application/x-dtbncx+xml", ""),
@@ -931,17 +983,25 @@ def write_opf(pages: list[Page], resources: dict[str, Resource], work_dir: Path,
         spine_items.append(f'    <itemref idref="{manifest_id(idx, "page")}"/>')
 
     opf = f"""<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid">
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" prefix="schema: https://schema.org/">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title id="id">{html.escape(PROJECT_TITLE)}</dc:title>
+    <dc:creator id="id-1">{html.escape(PROJECT_CREATOR)}</dc:creator>
+    <dc:identifier>issn:{PROJECT_ISSN}</dc:identifier>
     <dc:identifier id="bookid">{html.escape(book_id)}</dc:identifier>
-    <dc:identifier id="issn">issn:{PROJECT_ISSN}</dc:identifier>
-    <dc:title>{html.escape(PROJECT_TITLE)}</dc:title>
-    <dc:language>{LANGUAGE}</dc:language>
-    <dc:creator>{html.escape(PROJECT_CREATOR)}</dc:creator>
-    <dc:publisher>{html.escape(PROJECT_PUBLISHER)}</dc:publisher>
     <dc:rights>{html.escape(PROJECT_RIGHTS)}</dc:rights>
     <dc:source>{html.escape(PROJECT_SOURCE)}</dc:source>
+    <dc:language>{LANGUAGE}</dc:language>
+    <dc:date>{PROJECT_DATE}</dc:date>
+    <dc:description>{html.escape(PROJECT_DESCRIPTION)}</dc:description>
+    <dc:publisher>{html.escape(PROJECT_PUBLISHER)}</dc:publisher>
+{subject_xml}
+    <meta refines="#id" property="title-type">main</meta>
+    <meta refines="#id" property="file-as">{html.escape(PROJECT_TITLE)}</meta>
+{accessibility_xml}
     <meta property="dcterms:modified">{modified}</meta>
+    <meta refines="#id-1" property="role" scheme="marc:relators">aut</meta>
+    <meta refines="#id-1" property="file-as">{html.escape(PROJECT_CREATOR)}</meta>
   </metadata>
   <manifest>
 {manifest_xml}
@@ -1044,6 +1104,7 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
         report["zip"] = {
             "entry_count": len(names),
             "first_entry": first,
+            "bad_crc": zf.testzip(),
             "mimetype_ok": first == "mimetype"
             and info.compress_type == zipfile.ZIP_STORED
             and zf.read("mimetype") == b"application/epub+zip",
@@ -1052,7 +1113,23 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
         opf_path = container.find(".//{urn:oasis:names:tc:opendocument:xmlns:container}rootfile").attrib["full-path"]
         opf = ET.fromstring(zf.read(opf_path))
         opf_dir = posixpath.dirname(opf_path)
-        ns = {"opf": "http://www.idpf.org/2007/opf"}
+        ns = {"opf": "http://www.idpf.org/2007/opf", "dc": "http://purl.org/dc/elements/1.1/"}
+        metadata = opf.find("opf:metadata", ns)
+        meta_nodes = metadata.findall("opf:meta", ns) if metadata is not None else []
+        report["metadata"] = {
+            "title": [node.text or "" for node in opf.findall(".//dc:title", ns)],
+            "creator": [node.text or "" for node in opf.findall(".//dc:creator", ns)],
+            "publisher": [node.text or "" for node in opf.findall(".//dc:publisher", ns)],
+            "rights": [node.text or "" for node in opf.findall(".//dc:rights", ns)],
+            "source": [node.text or "" for node in opf.findall(".//dc:source", ns)],
+            "identifier": [node.text or "" for node in opf.findall(".//dc:identifier", ns)],
+            "language": [node.text or "" for node in opf.findall(".//dc:language", ns)],
+            "description_count": len(opf.findall(".//dc:description", ns)),
+            "subject_count": len(opf.findall(".//dc:subject", ns)),
+            "accessibility_meta_count": sum(
+                1 for node in meta_nodes if (node.attrib.get("property") or "").startswith("schema:access")
+            ),
+        }
         items = opf.findall(".//opf:manifest/opf:item", ns)
         ids = {item.attrib["id"] for item in items}
         missing_manifest = []
@@ -1069,6 +1146,7 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
         xhtml_files = [n for n in names if n.endswith((".xhtml", ".html"))]
         xml_errors = []
         image_refs = []
+        missing_alt = []
         href_refs = []
         anchors: dict[str, set[str]] = {}
         for name in xhtml_files:
@@ -1079,6 +1157,11 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
                 xml_errors.append([name, str(exc)])
             text = raw.decode("utf-8", errors="replace")
             image_refs.extend((name, match.group(1)) for match in re.finditer(r'<img[^>]+src="([^"]+)"', text))
+            missing_alt.extend(
+                (name, match.group("src"))
+                for match in re.finditer(r'<img\b(?P<tag>[^>]*)\bsrc="(?P<src>[^"]+)"[^>]*>', text)
+                if not re.search(r'\balt="[^"]+"', match.group(0))
+            )
             href_refs.extend((name, match.group(1)) for match in re.finditer(r'<a[^>]+href="([^"]+)"', text))
             anchors[name] = set(re.findall(r'\sid="([^"]+)"', text)) | set(re.findall(r'\sname="([^"]+)"', text))
 
@@ -1104,6 +1187,30 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
             elif anchor and anchor not in anchors.get(target, set()):
                 broken_internal.append([source, href, "missing_anchor", f"{target}#{anchor}"])
 
+        nav_target_errors = []
+        nav_span_labels = []
+        nav_link_count = 0
+        nav_types = []
+        nav_item = next((item for item in items if "nav" in item.attrib.get("properties", "").split()), None)
+        if nav_item is not None:
+            nav_path = posixpath.normpath(posixpath.join(opf_dir, nav_item.attrib["href"]))
+            nav_text = zf.read(nav_path).decode("utf-8", errors="replace")
+            nav_span_labels = [
+                re.sub(r"<[^>]+>", "", match.group(1)).strip()
+                for match in re.finditer(r"<span(?:\s[^>]*)?>(.*?)</span>", nav_text, re.DOTALL)
+            ]
+            nav_types = re.findall(r"<nav\b[^>]*(?:epub:)?type=\"([^\"]+)\"", nav_text)
+            nav_link_count = len(re.findall(r"<a\b[^>]*\bhref=\"[^\"]+\"", nav_text))
+            for href in re.findall(r"<a\b[^>]*\bhref=\"([^\"]+)\"", nav_text):
+                if is_external_href(href) or href.startswith("mailto:"):
+                    continue
+                clean, _, anchor = href.partition("#")
+                target = posixpath.normpath(posixpath.join(posixpath.dirname(nav_path), unquote(clean))) if clean else nav_path
+                if target not in names:
+                    nav_target_errors.append([href, "missing_file", target])
+                elif anchor and anchor not in anchors.get(target, set()):
+                    nav_target_errors.append([href, "missing_anchor", f"{target}#{anchor}"])
+
         report["epub"] = {
             "opf_path": opf_path,
             "manifest_count": len(items),
@@ -1115,21 +1222,38 @@ def audit_epub(epub_path: Path, resources: dict[str, Resource], work_dir: Path) 
             "xml_error_count": len(xml_errors),
             "xml_errors": xml_errors[:50],
             "image_ref_count": len(image_refs),
+            "missing_alt_count": len(missing_alt),
+            "missing_alt": missing_alt[:50],
             "missing_image_count": len(missing_images),
             "missing_images": missing_images[:50],
             "href_ref_count": len(href_refs),
             "external_link_count": external_links,
             "broken_internal_count": len(broken_internal),
             "broken_internal": broken_internal[:50],
+            "nav_span_count": len(nav_span_labels),
+            "nav_span_labels": nav_span_labels[:50],
+            "nav_link_count": nav_link_count,
+            "nav_types": nav_types,
+            "nav_has_landmarks": "landmarks" in nav_types,
+            "nav_target_error_count": len(nav_target_errors),
+            "nav_target_errors": nav_target_errors[:50],
         }
     report["passed"] = (
         report["resource_error_count"] == 0
         and report["zip"]["mimetype_ok"]
+        and report["zip"]["bad_crc"] is None
         and report["epub"]["missing_manifest_count"] == 0
         and report["epub"]["spine_missing_count"] == 0
         and report["epub"]["xml_error_count"] == 0
+        and report["epub"]["missing_alt_count"] == 0
         and report["epub"]["missing_image_count"] == 0
         and report["epub"]["broken_internal_count"] == 0
+        and report["epub"]["nav_span_count"] == 0
+        and report["epub"]["nav_target_error_count"] == 0
+        and report["epub"]["nav_has_landmarks"]
+        and report["metadata"]["description_count"] > 0
+        and report["metadata"]["subject_count"] > 0
+        and report["metadata"]["accessibility_meta_count"] > 0
     )
     report_dir = work_dir / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
@@ -1175,7 +1299,7 @@ def main() -> int:
 
     build_pages(root, pages, resources, work_dir)
     book_id = f"urn:uuid:{uuid.uuid4()}"
-    write_nav(toc_roots, work_dir)
+    write_nav(toc_roots, pages, work_dir)
     write_ncx(toc_roots, work_dir, book_id)
     write_opf(pages, resources, work_dir, book_id)
     write_container(work_dir)

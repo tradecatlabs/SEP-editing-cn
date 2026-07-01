@@ -15,7 +15,8 @@
 [下载 EPUB](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub) ·
 [查看 Release](https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.03) ·
 [构建说明](README-EPUB.md) ·
-[供应链说明](SUPPLY_CHAIN.md)
+[供应链说明](SUPPLY_CHAIN.md) ·
+[经验沉淀](docs/LESSONS.md)
 
 </div>
 
@@ -122,6 +123,7 @@ python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only
 ├── SUPPLY_CHAIN.md                   # 资源供应链与上下游说明
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息
 ├── .github/                          # Issue 模板与 PR 模板
+├── docs/LESSONS.md                   # EPUB 事故复盘、长期门禁与执行清单
 ├── docs/README_PATTERNS.md           # README 调研与项目目录模式沉淀
 ├── docs/SOURCE_GAPS.md               # 用户提供的待补充资料缺口备忘
 ├── dist/README.md                    # 本地 EPUB 产物目录说明

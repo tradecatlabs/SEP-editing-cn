@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-30T22:34:14.036836+00:00",
+  "generated_at": "2026-07-01T15:21:47Z",
   "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
-  "size": 109135515,
-  "sha256": "f1963040793a24295034d68b0479d92a5cf3dae2d45f13505e60bc26d9a13e80",
+  "size": 109146373,
+  "sha256": "3b9245be7b836adc2ea448a3cfbf82af40ab425ff5a2974fa76e835f5515730f",
   "zip_bad_crc": null,
   "first_entry": "mimetype",
   "first_entry_uncompressed": true,
@@ -24,8 +24,8 @@
     ],
     "identifier": [
       "issn:1095-5054",
-      "calibre:200",
-      "uuid:13501e1f-17d7-436b-b51a-a988e7fb0203",
+      "calibre:207",
+      "uuid:d3dcc0cb-e7c2-4fb2-9a5b-7451e0848af5",
       "urn:uuid:f5cbf4b8-21c2-457e-9d03-3fc616d481f5"
     ],
     "language": [
@@ -33,6 +33,24 @@
     ],
     "date": [
       "2026-06-30T16:00:00+00:00"
+    ],
+    "description_count": 1,
+    "subject_count": 6,
+    "accessibility_meta_count": 10,
+    "accessibility_meta": [
+      "schema:accessMode",
+      "schema:accessMode",
+      "schema:accessModeSufficient",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityFeature",
+      "schema:accessibilityHazard",
+      "schema:accessibilitySummary"
+    ],
+    "modified": [
+      "2026-07-01T15:14:08Z"
     ]
   },
   "tradecatlabs_notice": {
@@ -73,5 +91,25 @@
     "tag": "v2026.07.03",
     "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.03",
     "epub_asset_name": "SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
+  },
+  "local_completion": {
+    "description_count": 1,
+    "subject_count": 6,
+    "accessibility_meta_count": 10,
+    "nav_has_landmarks": true,
+    "missing_alt_count": 0,
+    "standard_two_line_notice": true,
+    "passed": true,
+    "epubcheck_ran": false,
+    "epubcheck_note": "本机未安装 Java，且用户已明确不安装 Java；因此没有运行官方 EPUBCheck。"
+  },
+  "title_page": {
+    "display_title_present": true,
+    "tradecatlabs_present": true,
+    "repo_link_present": true,
+    "pi_x_present": true,
+    "lab_x_present": false,
+    "separate_pi_label_present": false,
+    "standard_two_line_notice": true
   }
 }

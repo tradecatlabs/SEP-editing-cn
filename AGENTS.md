@@ -15,6 +15,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 ├── SUPPLY_CHAIN.md                   # 资源供应链、上下游与发布边界
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息与项目职责
 ├── .github/                          # Issue 模板与 PR 模板
+├── docs/LESSONS.md                   # EPUB 事故复盘、长期门禁与执行清单
 ├── docs/README_PATTERNS.md           # README 调研、同类项目模式与目录结构沉淀
 ├── docs/SOURCE_GAPS.md               # 用户提供的待补充资料缺口备忘
 ├── source/SEP-CN                     # 指向上游资料源的软链接，不是正文副本
@@ -39,6 +40,7 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - TradeCatLabs 正文说明只能通过 `tools/patch_epub_tradecatlabs_notice.py` 写入既有标题页，不得新增 spine/nav 页面，不得改动 OPF 元数据、封面、manifest、spine、nav 或 NCX。
 - EPUB3 nav 父级目录项不得使用无目标 `span` 作为最终发布形态；分组节点必须指向首个子页面，既有成品用 `tools/patch_epub_nav_targets.py` 最小修复。
 - TradeCatLabs 展示信息集中维护在 `TRADECATLABS.md`，供应链声明集中维护在 `SUPPLY_CHAIN.md`。
+- EPUB 目录、元数据、封面、打包和发布事故经验集中维护在 `docs/LESSONS.md`。
 - README 调研依据与目录结构模式集中维护在 `docs/README_PATTERNS.md`。
 - 贡献边界和 Issue/PR 入口分别维护在 `CONTRIBUTING.md` 与 `.github/`。
 
