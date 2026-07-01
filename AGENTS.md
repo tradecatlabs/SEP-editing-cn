@@ -62,5 +62,5 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - 修改仓库结构、发布报告或 Release 引用后必须运行 `python3 tools/check_repo_health.py`。
 - 重新发布 EPUB 前必须用真实 SEP-CN 克隆目录运行完整构建。
 - 发布前必须确认 `epub-audit.json` 中 XML 错误、缺失图片、内部坏链、资源错误均为 0。
-- 发布后必须确认 GitHub Release 附件包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
+- 发布后必须确认 GitHub Release 附件包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`resource-scan.json`、`orphan-pages.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
 - 不要把上游 SEP-CN 正文目录复制进本仓库；需要内容源时克隆到 `.source/SEP-CN` 或使用外部路径并通过 `--root` 指定。

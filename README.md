@@ -41,6 +41,8 @@
 | [completion-report.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03.1/completion-report.json) | 完备性审计报告 |
 | [user-style-diff-report.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03.1/user-style-diff-report.json) | 用户定稿规范差异报告 |
 | [resource-manifest.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03.1/resource-manifest.json) | 资源锁定清单 |
+| [resource-scan.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03.1/resource-scan.json) | 资源扫描报告 |
+| [orphan-pages.json](https://github.com/tradecatlabs/SEP-editing-cn/releases/download/v2026.07.03.1/orphan-pages.json) | 孤儿页面报告 |
 
 EPUB 文件大小约 `109MB`，超过 GitHub 普通 Git 单文件 `100MB` 限制，因此通过 GitHub Release 附件分发，不写入 Git 历史。
 

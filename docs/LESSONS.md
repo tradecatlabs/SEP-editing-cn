@@ -82,7 +82,7 @@ ZIP 可打开只是最低条件。iOS Books、Calibre、Kindle 对 OPF、nav、N
 
 - `release-manifest.json` 写入本地成品 SHA。
 - Release tag 必须指向包含当前发布文档和报告的提交。
-- Release 附件必须包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
+- Release 附件必须包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`resource-scan.json`、`orphan-pages.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
 - Release 上传后运行 `tools/check_release_assets.py --verify-epub` 下载 EPUB 并复算 SHA。
 - 远端下载 SHA 必须等于 `release-manifest.json`。
 

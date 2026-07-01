@@ -18,6 +18,8 @@ DEFAULT_ASSETS = [
     "completion-report.json",
     "user-style-diff-report.json",
     "resource-manifest.json",
+    "resource-scan.json",
+    "orphan-pages.json",
     "tradecatlabs-notice-report.json",
     "nav-targets-report.json",
 ]
