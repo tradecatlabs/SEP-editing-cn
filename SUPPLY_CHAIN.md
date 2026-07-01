@@ -35,7 +35,7 @@ dist/*.epub + reports/epub/*.json
 
 - 角色：中文 Markdown 资料源。
 - 链接：<https://github.com/Rivensa/SEP-CN>
-- 本仓库不复制该仓库正文内容，只通过 `source/SEP-CN` 和 `SOURCE.md` 指向上游。
+- 本仓库不复制该仓库正文内容，只通过 `source/SEP-CN`、`source/README.md` 和 `SOURCE.md` 指向上游。
 - 本地构建时需要把该仓库克隆到 `.source/SEP-CN` 或通过 `--root` 指向外部克隆路径。
 
 ## 本仓库处理链路
@@ -60,3 +60,4 @@ dist/*.epub + reports/epub/*.json
 - 本仓库发布的是 EPUB 构建链、审计证据和 Release 附件发布流程；整理后的 EPUB 成品通过 GitHub Release 附件分发。
 - 正文版权、原始 Markdown 源、原始目录维护和贡献历史以上游为准。
 - TradeCatLabs 负责实验性整理、构建、审计、发布说明和自动化改进，不替代 SEP 或 SEP-CN 上游项目。
+- 本仓库 `LICENSE` 只覆盖 TradeCatLabs 新增工程资产；正文、上游资料源和 Release EPUB 内部内容的权利边界见 `NOTICE.md`。

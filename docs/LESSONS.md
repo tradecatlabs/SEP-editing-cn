@@ -81,8 +81,21 @@ ZIP 可打开只是最低条件。iOS Books、Calibre、Kindle 对 OPF、nav、N
 当前门禁：
 
 - `release-manifest.json` 写入本地成品 SHA。
-- Release 上传后 `gh release download` 下载 EPUB。
+- Release tag 必须指向包含当前发布文档和报告的提交。
+- Release 附件必须包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
+- Release 上传后运行 `tools/check_release_assets.py --verify-epub` 下载 EPUB 并复算 SHA。
 - 远端下载 SHA 必须等于 `release-manifest.json`。
+
+### 7.1 不要把旧 tag 当作新发布
+
+如果 README 和本地报告已经更新，但 GitHub Release tag 仍指向旧提交，用户下载到的仍可能是旧 EPUB。复用旧 tag 会让“代码最新”和“资产最新”分裂。
+
+正确做法：
+
+- 优先创建新的 patch release tag，例如 `v2026.07.03.1`。
+- 不强制移动已公开 tag，避免破坏历史引用。
+- 新 tag 创建在当前 `HEAD` 上，再上传完整附件并设为 latest。
+- README、`RELEASE.md` 和 `reports/epub/release-manifest.json` 必须同时指向同一个 tag。
 
 ### 8. 资料缺口不能污染当前供应链
 
@@ -105,7 +118,8 @@ ZIP 可打开只是最低条件。iOS Books、Calibre、Kindle 对 OPF、nav、N
 - [ ] 修改后检查 `mimetype`、OPF、manifest、spine、nav、NCX、封面、元数据。
 - [ ] 检查 `nav_span_count=0`、`nav_target_errors=0`。
 - [ ] 用 Calibre 工具检查元数据。
-- [ ] Release 上传后下载远端资产复验 SHA。
+- [ ] Release tag 指向当前发布提交。
+- [ ] Release 上传后用 `tools/check_release_assets.py --verify-epub` 复验远端资产 SHA。
 
 ## 当前已落地资产
 
@@ -115,3 +129,5 @@ ZIP 可打开只是最低条件。iOS Books、Calibre、Kindle 对 OPF、nav、N
 - `reports/epub/nav-targets-report.json`：目录目标修复的机器可读证据。
 - `reports/epub/epub-audit.json`：最终 EPUB 审计门禁。
 - `reports/epub/release-manifest.json`：Release 资产 SHA 与元信息。
+- `tools/check_repo_health.py`：仓库结构、报告一致性、发布引用和软链接约定门禁。
+- `tools/check_release_assets.py`：GitHub Release 附件清单、远端 manifest 与 EPUB SHA 门禁。

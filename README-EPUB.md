@@ -7,17 +7,23 @@
 ## 已包含内容
 
 - `tools/build_sep_epub.py`：EPUB 构建、资源锁定、打包与审计工具。
+- `tools/check_repo_health.py`：校验公开仓库结构、报告一致性、发布引用和软链接约定。
+- `tools/check_release_assets.py`：校验 GitHub Release 附件、远端 `release-manifest.json` 和 EPUB SHA256。
 - `tools/patch_epub_tradecatlabs_notice.py`：只修改标题页正文提示，并验证 OPF、nav、NCX、封面、manifest、spine 不变。
 - `tools/patch_epub_nav_targets.py`：把 EPUB3 `nav.xhtml` 中没有 `href` 的父级目录项指向首个子目录页面，并验证 OPF、NCX、封面、元数据、manifest、spine 不变。
 - `dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub`：当前本地 EPUB 成品；不直接进入 Git 历史，发布时作为 GitHub Release 附件上传。
 - `reports/epub/`：发布清单、资源清单、孤儿页面清单、人工规范化差异与 EPUB 审计报告。
-- `source/SEP-CN`：指向上游资料源的软链接，不是正文副本。
+- `source/SEP-CN`：指向 `../.source/SEP-CN` 的软链接，不是正文副本；克隆 `.source/SEP-CN` 后该链接可解析。
 
 ## 环境要求
 
 - Python 3.10+
 - Pandoc
 - Python 包：`lxml`
+
+```bash
+python3 -m pip install -r requirements.txt
+```
 
 当前构建工具不强依赖 Java/epubcheck；内置审计会检查 EPUB 打包、OPF manifest、spine、XHTML/XML、图片引用、内部链接与锚点。
 
@@ -28,6 +34,13 @@ git clone https://github.com/Rivensa/SEP-CN .source/SEP-CN
 ```
 
 也可以把 `--root` 指向任意已经存在的 SEP-CN 本地目录。
+
+如果需要使用仓库内软链接指针，可按默认路径克隆：
+
+```bash
+git clone https://github.com/Rivensa/SEP-CN .source/SEP-CN
+test -e source/SEP-CN
+```
 
 ## 重新构建
 
@@ -70,6 +83,14 @@ build/epub/reports/resource-scan.json
 ```
 
 `--scan-only` 不会覆盖正式构建后的 `resource-manifest.json`。
+
+## 本地仓库健康检查
+
+```bash
+python3 tools/check_repo_health.py
+```
+
+该检查会验证：必需文档、CI workflow、报告 JSON、`release-manifest.json`/`epub-audit.json`/`completion-report.json` 的 SHA256 与 size 一致性、README/RELEASE 的 Release tag 引用、未提交 EPUB 大文件、`source/SEP-CN` 软链接目标。
 
 ## EPUB 元数据规则
 
@@ -125,3 +146,4 @@ python3 tools/patch_epub_nav_targets.py \
 - `dist/` 中的 EPUB 超过 GitHub 普通 Git 单文件 100MB 限制，默认只作为 GitHub Release 附件发布。
 - `build/` 是本地中间构建目录，不建议提交。
 - `reports/epub/` 是可追溯审计证据，建议随发布产物保留。
+- Release 上传后必须运行 `python3 tools/check_release_assets.py --repo tradecatlabs/SEP-editing-cn --tag <tag> --expected reports/epub/release-manifest.json --verify-epub`，确认远端 EPUB SHA256 与本地清单一致。

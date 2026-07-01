@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T15:21:47Z",
+  "generated_at": "2026-07-01T16:02:07Z",
   "artifact": "dist/斯坦福哲学百科全书（中文版） - The Metaphysics Research Lab, Department of Philosophy, Stanford University.epub",
   "size": 109146373,
   "sha256": "3b9245be7b836adc2ea448a3cfbf82af40ab425ff5a2974fa76e835f5515730f",
@@ -88,8 +88,8 @@
   },
   "release": {
     "repo": "tradecatlabs/SEP-editing-cn",
-    "tag": "v2026.07.03",
-    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.03",
+    "tag": "v2026.07.03.1",
+    "url": "https://github.com/tradecatlabs/SEP-editing-cn/releases/tag/v2026.07.03.1",
     "epub_asset_name": "SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
   },
   "local_completion": {

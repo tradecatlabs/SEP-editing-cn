@@ -38,6 +38,14 @@ python3 tools/build_sep_epub.py \
 python3 -m py_compile tools/build_sep_epub.py
 ```
 
+完整本地仓库健康检查：
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 -m py_compile tools/build_sep_epub.py tools/patch_epub_tradecatlabs_notice.py tools/patch_epub_nav_targets.py tools/check_repo_health.py tools/check_release_assets.py
+python3 tools/check_repo_health.py
+```
+
 只扫描目录和资源：
 
 ```bash
@@ -51,6 +59,7 @@ python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only
 - 修改 EPUB 构建逻辑时，说明验证命令和审计结果。
 - 修改发布产物时，同步更新 `reports/epub/release-manifest.json`。
 - 涉及供应链、版权边界或上游来源时，同步更新 `SOURCE.md` 和 `SUPPLY_CHAIN.md`。
+- 涉及 Release 附件或发布清单时，同步运行 `tools/check_release_assets.py` 并保留校验结果。
 
 ## 报告阅读器问题时请提供
 

@@ -9,17 +9,26 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 ```text
 .
 ├── README.md                         # 公开仓库入口说明
+├── CODE_OF_CONDUCT.md                # 协作行为准则
 ├── CONTRIBUTING.md                   # 贡献指南、问题反馈边界与 PR 要求
+├── LICENSE                           # TradeCatLabs 新增代码与文档许可证
+├── NOTICE.md                         # SEP/SEP-CN/Release EPUB 版权边界说明
 ├── README-EPUB.md                    # EPUB 构建、扫描、审计与发布说明
+├── RELEASE.md                        # Release 附件发布与校验流程
+├── SECURITY.md                       # 安全与供应链问题报告规则
 ├── SOURCE.md                         # 上游资料源与许可证边界说明
 ├── SUPPLY_CHAIN.md                   # 资源供应链、上下游与发布边界
 ├── TRADECATLABS.md                   # TradeCatLabs 实验室信息与项目职责
-├── .github/                          # Issue 模板与 PR 模板
+├── requirements.txt                  # Python 构建依赖
+├── .github/                          # Issue 模板、PR 模板与 GitHub Actions
 ├── docs/LESSONS.md                   # EPUB 事故复盘、长期门禁与执行清单
 ├── docs/README_PATTERNS.md           # README 调研、同类项目模式与目录结构沉淀
 ├── docs/SOURCE_GAPS.md               # 用户提供的待补充资料缺口备忘
-├── source/SEP-CN                     # 指向上游资料源的软链接，不是正文副本
+├── source/README.md                  # 资料源指针目录说明
+├── source/SEP-CN                     # 指向 ../.source/SEP-CN 的软链接，不是正文副本
 ├── tools/build_sep_epub.py           # 标准 EPUB 构建、资源锁定与审计工具
+├── tools/check_repo_health.py        # 本地仓库结构、报告一致性与发布引用检查
+├── tools/check_release_assets.py     # GitHub Release 附件与 SHA256 一致性检查
 ├── tools/patch_epub_nav_targets.py   # 修复 nav.xhtml 父级目录无目标项并守住结构不变量
 ├── tools/patch_epub_tradecatlabs_notice.py # 保持元数据、封面和目录不变的标题页补丁工具
 ├── reports/epub/                     # 已发布产物对应的发布清单与审计证据
@@ -43,10 +52,15 @@ SEP-editing-cn 是 SEP-CN Markdown 内容到标准 EPUB 的构建与发布仓库
 - EPUB 目录、元数据、封面、打包和发布事故经验集中维护在 `docs/LESSONS.md`。
 - README 调研依据与目录结构模式集中维护在 `docs/README_PATTERNS.md`。
 - 贡献边界和 Issue/PR 入口分别维护在 `CONTRIBUTING.md` 与 `.github/`。
+- 仓库健康检查入口是 `tools/check_repo_health.py`，GitHub Actions 必须至少执行该检查。
+- Release 附件上传后必须用 `tools/check_release_assets.py --verify-epub` 验证远端 EPUB 与本地发布清单一致。
+- `LICENSE` 不覆盖 SEP 正文、SEP-CN 上游资料和 Release EPUB 内部正文；相关边界必须同步维护在 `NOTICE.md`、`SOURCE.md` 和 `SUPPLY_CHAIN.md`。
 
 ## 维护规则
 
-- 修改 `tools/*.py` 后必须运行 `python3 -m py_compile tools/build_sep_epub.py tools/patch_epub_tradecatlabs_notice.py tools/patch_epub_nav_targets.py`。
+- 修改 `tools/*.py` 后必须运行 `python3 -m py_compile tools/build_sep_epub.py tools/patch_epub_tradecatlabs_notice.py tools/patch_epub_nav_targets.py tools/check_repo_health.py tools/check_release_assets.py`。
+- 修改仓库结构、发布报告或 Release 引用后必须运行 `python3 tools/check_repo_health.py`。
 - 重新发布 EPUB 前必须用真实 SEP-CN 克隆目录运行完整构建。
 - 发布前必须确认 `epub-audit.json` 中 XML 错误、缺失图片、内部坏链、资源错误均为 0。
+- 发布后必须确认 GitHub Release 附件包含 EPUB、`release-manifest.json`、`epub-audit.json`、`completion-report.json`、`user-style-diff-report.json`、`resource-manifest.json`、`tradecatlabs-notice-report.json` 和 `nav-targets-report.json`。
 - 不要把上游 SEP-CN 正文目录复制进本仓库；需要内容源时克隆到 `.source/SEP-CN` 或使用外部路径并通过 `--root` 指定。

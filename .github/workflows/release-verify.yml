@@ -1,0 +1,42 @@
+name: Release Verify
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to verify"
+        required: true
+        default: "v2026.07.03.1"
+      verify_epub:
+        description: "Download EPUB and verify SHA256"
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  verify:
+    name: verify-release-assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          extra_args=""
+          if [ "${{ inputs.verify_epub }}" = "true" ]; then
+            extra_args="--verify-epub"
+          fi
+          python tools/check_release_assets.py \
+            --repo tradecatlabs/SEP-editing-cn \
+            --tag "${{ inputs.tag }}" \
+            --expected reports/epub/release-manifest.json \
+            ${extra_args}

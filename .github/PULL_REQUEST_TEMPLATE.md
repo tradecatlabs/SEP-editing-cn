@@ -12,8 +12,10 @@
 ## Verification
 
 - [ ] `python3 -m py_compile tools/build_sep_epub.py`
+- [ ] `python3 tools/check_repo_health.py`
 - [ ] `python3 tools/build_sep_epub.py --root .source/SEP-CN --scan-only`
 - [ ] Full EPUB build completed
+- [ ] Release assets verified with `tools/check_release_assets.py`
 - [ ] Not applicable
 
 ## Release Artifact Policy

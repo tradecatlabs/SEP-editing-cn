@@ -35,7 +35,7 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release create v2026.07.03 \
+gh release create v2026.07.03.1 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
@@ -45,7 +45,8 @@ gh release create v2026.07.03 \
   "reports/epub/tradecatlabs-notice-report.json" \
   "reports/epub/nav-targets-report.json" \
   --repo tradecatlabs/SEP-editing-cn \
-  --title "SEP Chinese EPUB" \
+  --title "SEP Chinese EPUB v2026.07.03.1" \
+  --latest \
   --notes "EPUB artifact, release manifest, completion report, user style diff report, resource manifest, nav-target fix report, TradeCatLabs notice report, and audit report."
 ```
 
@@ -56,7 +57,7 @@ epub_source="$(find dist -maxdepth 1 -type f -name '*.epub' ! -name '*sample*' |
 epub_asset="/tmp/SEP-Chinese-The-Metaphysics-Research-Lab-Stanford-University.epub"
 cp "$epub_source" "$epub_asset"
 
-gh release upload v2026.07.03 \
+gh release upload v2026.07.03.1 \
   "$epub_asset" \
   "reports/epub/release-manifest.json" \
   "reports/epub/epub-audit.json" \
@@ -71,4 +72,12 @@ gh release upload v2026.07.03 \
 
 ## 校验
 
-发布后对照 `reports/epub/release-manifest.json` 中的 `sha256` 校验下载文件。
+发布后必须对照 `reports/epub/release-manifest.json` 中的 `sha256` 校验下载文件：
+
+```bash
+python3 tools/check_release_assets.py \
+  --repo tradecatlabs/SEP-editing-cn \
+  --tag v2026.07.03.1 \
+  --expected reports/epub/release-manifest.json \
+  --verify-epub
+```
